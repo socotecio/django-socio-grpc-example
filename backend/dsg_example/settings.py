@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9d5cuj1#sp@@xee&dg#)p!-gqvjtl4)nx(1(s_0j_k(8_&-i(9"
+SECRET_KEY = "django-insecure-%j*fq&^@hy31rxhb4j+is%^=7i18b&f016a1=+sl7e28$h82ka"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_socio_grpc",
+    "app_example",
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,19 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+GRPC_FRAMEWORK = {"ROOT_HANDLERS_HOOK": "app_example.handlers.grpc_handlers"}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+}

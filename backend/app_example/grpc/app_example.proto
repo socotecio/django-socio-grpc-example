@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package dsg_example.app_example;
+
+import "google/protobuf/empty.proto";
+
+service QuestionController {
+    rpc Create(QuestionRequest) returns (QuestionResponse) {}
+    rpc Destroy(QuestionDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(QuestionListRequest) returns (QuestionListResponse) {}
+    rpc PartialUpdate(QuestionPartialUpdateRequest) returns (QuestionResponse) {}
+    rpc Retrieve(QuestionRetrieveRequest) returns (QuestionResponse) {}
+    rpc Update(QuestionRequest) returns (QuestionResponse) {}
+}
+
+message QuestionDestroyRequest {
+    int32 id = 1;
+}
+
+message QuestionListRequest {
+}
+
+message QuestionListResponse {
+    repeated QuestionResponse results = 1;
+}
+
+message QuestionPartialUpdateRequest {
+    int32 id = 1;
+    string question_text = 2;
+    string pub_date = 3;
+    repeated string _partial_update_fields = 4;
+}
+
+message QuestionRequest {
+    int32 id = 1;
+    string question_text = 2;
+    string pub_date = 3;
+}
+
+message QuestionResponse {
+    int32 id = 1;
+    string question_text = 2;
+    string pub_date = 3;
+}
+
+message QuestionRetrieveRequest {
+    int32 id = 1;
+}
+
