@@ -40,6 +40,11 @@ class QuestionControllerStub(object):
                 request_serializer=app__example_dot_grpc_dot_app__example__pb2.QuestionRetrieveRequest.SerializeToString,
                 response_deserializer=app__example_dot_grpc_dot_app__example__pb2.QuestionResponse.FromString,
                 )
+        self.Stream = channel.stream_stream(
+                '/dsg_example.app_example.QuestionController/Stream',
+                request_serializer=app__example_dot_grpc_dot_app__example__pb2.QuestionStreamRequest.SerializeToString,
+                response_deserializer=app__example_dot_grpc_dot_app__example__pb2.QuestionStreamResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.app_example.QuestionController/Update',
                 request_serializer=app__example_dot_grpc_dot_app__example__pb2.QuestionRequest.SerializeToString,
@@ -80,6 +85,12 @@ class QuestionControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Stream(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -113,6 +124,11 @@ def add_QuestionControllerServicer_to_server(servicer, server):
                     servicer.Retrieve,
                     request_deserializer=app__example_dot_grpc_dot_app__example__pb2.QuestionRetrieveRequest.FromString,
                     response_serializer=app__example_dot_grpc_dot_app__example__pb2.QuestionResponse.SerializeToString,
+            ),
+            'Stream': grpc.stream_stream_rpc_method_handler(
+                    servicer.Stream,
+                    request_deserializer=app__example_dot_grpc_dot_app__example__pb2.QuestionStreamRequest.FromString,
+                    response_serializer=app__example_dot_grpc_dot_app__example__pb2.QuestionStreamResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
@@ -211,6 +227,23 @@ class QuestionController(object):
         return grpc.experimental.unary_unary(request, target, '/dsg_example.app_example.QuestionController/Retrieve',
             app__example_dot_grpc_dot_app__example__pb2.QuestionRetrieveRequest.SerializeToString,
             app__example_dot_grpc_dot_app__example__pb2.QuestionResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Stream(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/dsg_example.app_example.QuestionController/Stream',
+            app__example_dot_grpc_dot_app__example__pb2.QuestionStreamRequest.SerializeToString,
+            app__example_dot_grpc_dot_app__example__pb2.QuestionStreamResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

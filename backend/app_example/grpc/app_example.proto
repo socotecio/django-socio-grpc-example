@@ -10,6 +10,7 @@ service QuestionController {
     rpc List(QuestionListRequest) returns (QuestionListResponse) {}
     rpc PartialUpdate(QuestionPartialUpdateRequest) returns (QuestionResponse) {}
     rpc Retrieve(QuestionRetrieveRequest) returns (QuestionResponse) {}
+    rpc Stream(stream QuestionStreamRequest) returns (stream QuestionStreamResponse) {}
     rpc Update(QuestionRequest) returns (QuestionResponse) {}
 }
 
@@ -45,5 +46,13 @@ message QuestionResponse {
 
 message QuestionRetrieveRequest {
     int32 id = 1;
+}
+
+message QuestionStreamRequest {
+    string question_text = 1;
+}
+
+message QuestionStreamResponse {
+    string response = 1;
 }
 
