@@ -1,0 +1,17 @@
+.env
+.env.prod
+.env.stagging
+media
+static/*
+helm/*_IGNORE.yml
+.dockerenv
+*.pyc
+**values_*_secrets.yaml
+.idea
+.idea/
+data/
+.devcontainer
+.vscode
+Makefile
+.pytest_cache
+*.sqlite3
