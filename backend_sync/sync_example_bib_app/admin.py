@@ -8,6 +8,7 @@ from .models import Author, Publisher, PublicationCategory, Book, Journal
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name_first', 'name_last', 'birth_date')
+    
 
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
