@@ -1,0 +1,52 @@
+[tool.poetry]
+authors = ["Adrien Montagu <adrienmontagu@gmail.com>", "mark doerr <mark.doerr@uni-greifswald>"]
+description = "Example for DSG lib"
+license = "Apache-2.0"
+name = "sync_example_bib_app"
+version = "0.0.1"
+
+[tool.poetry.dependencies]
+django = "*"
+django-cors-headers = "*"
+django-environ = "*"
+django-filter = "*"
+django-socio-grpc = {version = "*"}
+djangorestframework = "*"
+python = ">=3.9,<3.12"
+
+[tool.poetry.dev-dependencies]
+gunicorn = "*"
+black = "*"
+flake8 = "*"
+isort = "*"
+pytest = "*"
+pytest-django = "*"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+  | examples
+  | migrations
+  | grpc
+)/
+'''
+include = '\.pyi?$'
+line-length = 95
+
+[tool.isort]
+include_trailing_comma = true
+line_length = 95
+multi_line_output = 3
+profile = "black"
+skip = ["./.venv"]
+skip_glob = ["**/migrations/*", "**/grpc/*"]
+use_parentheses = true
