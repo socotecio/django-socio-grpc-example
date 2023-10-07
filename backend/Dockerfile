@@ -30,4 +30,4 @@ RUN poetry install
 
 # RUN django-admin startproject dsg_example
 
-# RUN python manage.py startapp app_example
+# RUN python manage.py startapp async_example_bib_app

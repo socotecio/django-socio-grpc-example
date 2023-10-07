@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_socio_grpc",
-    "app_example",
+    "async_example_bib_app",
 ]
 
 MIDDLEWARE = [
@@ -124,7 +124,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-GRPC_FRAMEWORK = {"ROOT_HANDLERS_HOOK": "app_example.handlers.grpc_handlers"}
+GRPC_FRAMEWORK = {"ROOT_HANDLERS_HOOK": "async_example_bib_app.handlers.grpc_handlers"}
 
 LOGGING = {
     "version": 1,
