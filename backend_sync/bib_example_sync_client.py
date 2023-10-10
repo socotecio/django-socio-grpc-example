@@ -1,5 +1,6 @@
 
 import grpc
+
 from sync_example_bib_app.grpc import sync_example_bib_app_pb2_grpc, sync_example_bib_app_pb2
 
 def main():
