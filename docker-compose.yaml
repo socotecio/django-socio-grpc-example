@@ -30,6 +30,20 @@ services:
     networks:
       dsg-example-network:
 
+
+  dsg-example-sync-grpc:
+    build:
+      context: ./backend_sync
+    command: /opt/code/manage.py grpcrunserver --dev
+    volumes:
+      - ./backend_sync:/opt/code
+    ports:
+      - "9082:50051"
+    env_file:
+      - ./backend_sync/.env
+    networks:
+      dsg-example-network:
+
   # envoy:
   #   build:
   #     context: ./
