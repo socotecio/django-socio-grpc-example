@@ -1,11 +1,11 @@
-import django_filters
-from django_filters.rest_framework import UUIDFilter
+from django_filters.rest_framework import FilterSet, CharFilter
 
-from .models import Author, Publisher, PublicationCategory, Book, Journal
+from .models import Author
 
 
-class AuthorFilterSet(django_filters.FilterSet):
-    #id = UUIDFilter(field_name='id')
+class AuthorFilterSet(FilterSet):
+
+    name_last = CharFilter(field_name="name_last", lookup_expr="contains")
 
     class Meta:
         model = Author

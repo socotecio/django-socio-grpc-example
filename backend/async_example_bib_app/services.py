@@ -9,7 +9,7 @@ from .filters import AuthorFilterSet
 
 class AuthorService(generics.AsyncModelService):
     queryset = Author.objects.all()
-    filter_class = AuthorFilterSet
+    filterset_class = AuthorFilterSet
     serializer_class = AuthorProtoSerializer
 
 class PublisherService(generics.AsyncModelService):
