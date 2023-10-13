@@ -1,4 +1,6 @@
 from django_socio_grpc import proto_serializers
+from rest_framework.serializers import UUIDField, PrimaryKeyRelatedField
+
 from .models import Author, Publisher, PublicationCategory, Book, Journal
 
 from async_example_bib_app.grpc.async_example_bib_app_pb2 import (
@@ -34,6 +36,11 @@ class PublicationCategoryProtoSerializer(proto_serializers.ModelProtoSerializer)
         proto_class_list = PublicationCategoryListResponse
 
 class BookProtoSerializer(proto_serializers.ModelProtoSerializer):
+    categories = PrimaryKeyRelatedField(queryset=PublicationCategory.objects.all(), pk_field=UUIDField(format="hex_verbose"), many=True)
+    authors = PrimaryKeyRelatedField(queryset=Author.objects.all(), pk_field=UUIDField(format="hex_verbose"), many=True)
+
+    publisher = PrimaryKeyRelatedField(queryset=Publisher.objects.all(), pk_field=UUIDField(format="hex_verbose"))
+
     class Meta:
         model = Book
         fields = ["book_id", "title", "authors", "categories", "isbn", "publisher", "publication_date"]
@@ -42,6 +49,12 @@ class BookProtoSerializer(proto_serializers.ModelProtoSerializer):
         proto_class_list = BookListResponse
 
 class JournalProtoSerializer(proto_serializers.ModelProtoSerializer):
+
+    categories = PrimaryKeyRelatedField(queryset=PublicationCategory.objects.all(), pk_field=UUIDField(format="hex_verbose"), many=True)
+    authors = PrimaryKeyRelatedField(queryset=Author.objects.all(), pk_field=UUIDField(format="hex_verbose"), many=True)
+    
+    publisher = PrimaryKeyRelatedField(queryset=Publisher.objects.all(), pk_field=UUIDField(format="hex_verbose"))
+
     class Meta:
         model = Journal
         fields = ["journal_id", "title", "authors", "categories", "publisher", "publication_date", "volume", "issue", "issn"]

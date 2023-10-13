@@ -5,9 +5,11 @@ from .models import Author, Publisher, PublicationCategory, Book, Journal
 
 from .serializers import AuthorProtoSerializer, PublisherProtoSerializer, PublicationCategoryProtoSerializer, BookProtoSerializer, JournalProtoSerializer
 
+from .filters import AuthorFilterSet
 
 class AuthorService(generics.AsyncModelService):
     queryset = Author.objects.all()
+    filter_class = AuthorFilterSet
     serializer_class = AuthorProtoSerializer
 
 class PublisherService(generics.AsyncModelService):
