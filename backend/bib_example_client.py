@@ -3,12 +3,12 @@
 
 import asyncio
 import grpc
-from async_example_bib_app.grpc import async_example_bib_app_pb2_grpc, async_example_bib_app_pb2
+from example_bib_app.grpc import example_bib_app_pb2_grpc, example_bib_app_pb2
 
 
 async def main():
     async with grpc.aio.insecure_channel("localhost:50051") as channel:
-        stub = async_example_bib_app_pb2_grpc.AuthorControllerStub(channel)
+        stub = example_bib_app_pb2_grpc.AuthorControllerStub(channel)
         
         queue = asyncio.Queue()
 
@@ -21,13 +21,13 @@ async def main():
         async for response in stub.List(generate_requests()):
             print("Response received :", flush=True)
             print(response.response, flush=True)
-            request = async_example_bib_app_pb2.AuthorListRequest()
+            request = example_bib_app_pb2.AuthorListRequest()
             await queue.put(request)
 
         # async for response in stub.Stream(generate_requests()):
         #     print("Response received :", flush=True)
         #     print(response.response, flush=True)
-        #     request = async_example_bib_app_pb2.AuthorStreamRequest(
+        #     request = example_bib_app_pb2.AuthorStreamRequest(
         #         author_id=input("Give author id\n")
         #     )
         #     await queue.put(request)

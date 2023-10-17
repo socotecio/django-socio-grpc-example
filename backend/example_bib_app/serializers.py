@@ -23,7 +23,7 @@ from rest_framework.serializers import UUIDField, PrimaryKeyRelatedField
 
 from .models import Author, Publisher, PublicationCategory, Book, Journal
 
-from async_example_bib_app.grpc.async_example_bib_app_pb2 import (
+from example_bib_app.grpc.example_bib_app_pb2 import (
     AuthorResponse,
     AuthorListResponse,
     PublisherResponse,

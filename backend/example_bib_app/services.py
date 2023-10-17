@@ -1,6 +1,6 @@
 
 """
-GitHub Copilot: The selected code is a Python module named `services.py`. This module defines several gRPC service classes for the `async_example_bib_app` application. 
+GitHub Copilot: The selected code is a Python module named `services.py`. This module defines several gRPC service classes for the `example_bib_app` application. 
 The module imports several modules from the same application, including `models`, `serializers`, and `filters`. 
 The module also imports the `generics` module from the `django_socio_grpc` package, which provides base classes for gRPC services.
 
@@ -16,7 +16,7 @@ The `PublisherService` class defines `filterset_class` instead of `filterset_fie
 The `BookService` class also defines `filterset_class` using a custom filter class named `BookFilterSet`. Additionally, the `BookStreamingService` class is defined to stream books to the client. 
 The `Stream` method is decorated with the `@grpc_action` decorator, which specifies the request and response message types, as well as the request and response stream types.
 
-Overall, this module provides a convenient way to define gRPC services for the specified models in the `async_example_bib_app` application. To improve the readability of the code, 
+Overall, this module provides a convenient way to define gRPC services for the specified models in the `example_bib_app` application. To improve the readability of the code, 
 the `filterset_fields` and `filterset_class` attributes could be grouped by their type (e.g., author-related filters, publisher-related filters) to make it easier to see which filters are being used. 
 Additionally, the `BookStreamingService` class could be moved to a separate module to improve the organization of the code.
 """
@@ -87,7 +87,9 @@ class JournalService(generics.AsyncModelService):
     queryset = Journal.objects.all()
     serializer_class = JournalProtoSerializer
 
-
+    # filterset_fields allows for filtering of the queryset,
+    # mind that it is also possible to filter on related fields with '__' (e.g. publisher__name)
+    search_fields = ("title", "authors__name_first", "authors__name_last", "publisher__name", "categories__name", "issn",)
 
 
 #from .models import Question
@@ -117,4 +119,4 @@ class JournalService(generics.AsyncModelService):
 #         async for question in request:
 #             print("Question received :")
 #             print(question.question_text)
-#             yield async_example_bib_app_pb2.QuestionStreamResponse(response=input("Give response\n"))
+#             yield example_bib_app_pb2.QuestionStreamResponse(response=input("Give response\n"))

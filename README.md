@@ -40,7 +40,7 @@ cd backend
 poetry install
 
 # create the database
-python manage.py makemigrations async_example_bib_app
+python manage.py makemigrations example_bib_app
 python manage.py migrate
 
 # create a superuser
