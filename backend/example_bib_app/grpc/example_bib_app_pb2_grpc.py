@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from async_example_bib_app.grpc import async_example_bib_app_pb2 as async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2
+from example_bib_app.grpc import example_bib_app_pb2 as example__bib__app_dot_grpc_dot_example__bib__app__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
@@ -16,34 +16,34 @@ class AuthorControllerStub(object):
             channel: A grpc.Channel.
         """
         self.Create = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.AuthorController/Create',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+                '/dsg_example.example_bib_app.AuthorController/Create',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
                 )
         self.Destroy = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.AuthorController/Destroy',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorDestroyRequest.SerializeToString,
+                '/dsg_example.example_bib_app.AuthorController/Destroy',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.List = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.AuthorController/List',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorListRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorListResponse.FromString,
+                '/dsg_example.example_bib_app.AuthorController/List',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListResponse.FromString,
                 )
         self.PartialUpdate = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.AuthorController/PartialUpdate',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorPartialUpdateRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+                '/dsg_example.example_bib_app.AuthorController/PartialUpdate',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorPartialUpdateRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
                 )
         self.Retrieve = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.AuthorController/Retrieve',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+                '/dsg_example.example_bib_app.AuthorController/Retrieve',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
                 )
         self.Update = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.AuthorController/Update',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+                '/dsg_example.example_bib_app.AuthorController/Update',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
                 )
 
 
@@ -91,37 +91,37 @@ def add_AuthorControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorDestroyRequest.FromString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorDestroyRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorListRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorListResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListResponse.SerializeToString,
             ),
             'PartialUpdate': grpc.unary_unary_rpc_method_handler(
                     servicer.PartialUpdate,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorPartialUpdateRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorPartialUpdateRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.SerializeToString,
             ),
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRetrieveRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'dsg_example.async_example_bib_app.AuthorController', rpc_method_handlers)
+            'dsg_example.example_bib_app.AuthorController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -140,9 +140,9 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.AuthorController/Create',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Create',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -157,8 +157,8 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.AuthorController/Destroy',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorDestroyRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Destroy',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -174,9 +174,9 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.AuthorController/List',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorListRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorListResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/List',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -191,9 +191,9 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.AuthorController/PartialUpdate',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorPartialUpdateRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/PartialUpdate',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorPartialUpdateRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -208,9 +208,9 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.AuthorController/Retrieve',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Retrieve',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -225,9 +225,9 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.AuthorController/Update',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.AuthorResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Update',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -242,34 +242,34 @@ class BookControllerStub(object):
             channel: A grpc.Channel.
         """
         self.Create = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.BookController/Create',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+                '/dsg_example.example_bib_app.BookController/Create',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
                 )
         self.Destroy = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.BookController/Destroy',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookDestroyRequest.SerializeToString,
+                '/dsg_example.example_bib_app.BookController/Destroy',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.List = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.BookController/List',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookListRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookListResponse.FromString,
+                '/dsg_example.example_bib_app.BookController/List',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookListRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookListResponse.FromString,
                 )
         self.PartialUpdate = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.BookController/PartialUpdate',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookPartialUpdateRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+                '/dsg_example.example_bib_app.BookController/PartialUpdate',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookPartialUpdateRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
                 )
         self.Retrieve = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.BookController/Retrieve',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+                '/dsg_example.example_bib_app.BookController/Retrieve',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
                 )
         self.Update = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.BookController/Update',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+                '/dsg_example.example_bib_app.BookController/Update',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
                 )
 
 
@@ -317,37 +317,37 @@ def add_BookControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookDestroyRequest.FromString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookDestroyRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookListRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookListResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookListRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookListResponse.SerializeToString,
             ),
             'PartialUpdate': grpc.unary_unary_rpc_method_handler(
                     servicer.PartialUpdate,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookPartialUpdateRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookPartialUpdateRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
             ),
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRetrieveRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'dsg_example.async_example_bib_app.BookController', rpc_method_handlers)
+            'dsg_example.example_bib_app.BookController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -366,9 +366,9 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.BookController/Create',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Create',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -383,8 +383,8 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.BookController/Destroy',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookDestroyRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Destroy',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -400,9 +400,9 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.BookController/List',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookListRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookListResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/List',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookListRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -417,9 +417,9 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.BookController/PartialUpdate',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookPartialUpdateRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/PartialUpdate',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookPartialUpdateRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -434,9 +434,9 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.BookController/Retrieve',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Retrieve',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -451,9 +451,9 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.BookController/Update',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.BookResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Update',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -468,34 +468,34 @@ class JournalControllerStub(object):
             channel: A grpc.Channel.
         """
         self.Create = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.JournalController/Create',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+                '/dsg_example.example_bib_app.JournalController/Create',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
                 )
         self.Destroy = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.JournalController/Destroy',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalDestroyRequest.SerializeToString,
+                '/dsg_example.example_bib_app.JournalController/Destroy',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.List = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.JournalController/List',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalListRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalListResponse.FromString,
+                '/dsg_example.example_bib_app.JournalController/List',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalListRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalListResponse.FromString,
                 )
         self.PartialUpdate = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.JournalController/PartialUpdate',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalPartialUpdateRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+                '/dsg_example.example_bib_app.JournalController/PartialUpdate',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalPartialUpdateRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
                 )
         self.Retrieve = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.JournalController/Retrieve',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+                '/dsg_example.example_bib_app.JournalController/Retrieve',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
                 )
         self.Update = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.JournalController/Update',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+                '/dsg_example.example_bib_app.JournalController/Update',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
                 )
 
 
@@ -543,37 +543,37 @@ def add_JournalControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalDestroyRequest.FromString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalDestroyRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalListRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalListResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalListRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalListResponse.SerializeToString,
             ),
             'PartialUpdate': grpc.unary_unary_rpc_method_handler(
                     servicer.PartialUpdate,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalPartialUpdateRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalPartialUpdateRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.SerializeToString,
             ),
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRetrieveRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'dsg_example.async_example_bib_app.JournalController', rpc_method_handlers)
+            'dsg_example.example_bib_app.JournalController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -592,9 +592,9 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.JournalController/Create',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Create',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -609,8 +609,8 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.JournalController/Destroy',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalDestroyRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Destroy',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -626,9 +626,9 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.JournalController/List',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalListRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalListResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/List',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalListRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -643,9 +643,9 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.JournalController/PartialUpdate',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalPartialUpdateRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/PartialUpdate',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalPartialUpdateRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -660,9 +660,9 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.JournalController/Retrieve',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Retrieve',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -677,9 +677,9 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.JournalController/Update',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.JournalResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Update',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -694,34 +694,34 @@ class PublicationCategoryControllerStub(object):
             channel: A grpc.Channel.
         """
         self.Create = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublicationCategoryController/Create',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+                '/dsg_example.example_bib_app.PublicationCategoryController/Create',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
                 )
         self.Destroy = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublicationCategoryController/Destroy',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryDestroyRequest.SerializeToString,
+                '/dsg_example.example_bib_app.PublicationCategoryController/Destroy',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.List = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublicationCategoryController/List',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryListRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryListResponse.FromString,
+                '/dsg_example.example_bib_app.PublicationCategoryController/List',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryListRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryListResponse.FromString,
                 )
         self.PartialUpdate = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublicationCategoryController/PartialUpdate',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+                '/dsg_example.example_bib_app.PublicationCategoryController/PartialUpdate',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
                 )
         self.Retrieve = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublicationCategoryController/Retrieve',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+                '/dsg_example.example_bib_app.PublicationCategoryController/Retrieve',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
                 )
         self.Update = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublicationCategoryController/Update',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+                '/dsg_example.example_bib_app.PublicationCategoryController/Update',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
                 )
 
 
@@ -769,37 +769,37 @@ def add_PublicationCategoryControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryDestroyRequest.FromString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryDestroyRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryListRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryListResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryListRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryListResponse.SerializeToString,
             ),
             'PartialUpdate': grpc.unary_unary_rpc_method_handler(
                     servicer.PartialUpdate,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
             ),
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRetrieveRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'dsg_example.async_example_bib_app.PublicationCategoryController', rpc_method_handlers)
+            'dsg_example.example_bib_app.PublicationCategoryController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -818,9 +818,9 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublicationCategoryController/Create',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Create',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -835,8 +835,8 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublicationCategoryController/Destroy',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryDestroyRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Destroy',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -852,9 +852,9 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublicationCategoryController/List',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryListRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryListResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/List',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryListRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -869,9 +869,9 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublicationCategoryController/PartialUpdate',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/PartialUpdate',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -886,9 +886,9 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublicationCategoryController/Retrieve',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Retrieve',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -903,9 +903,9 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublicationCategoryController/Update',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublicationCategoryResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Update',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -920,34 +920,34 @@ class PublisherControllerStub(object):
             channel: A grpc.Channel.
         """
         self.Create = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublisherController/Create',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+                '/dsg_example.example_bib_app.PublisherController/Create',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
                 )
         self.Destroy = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublisherController/Destroy',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherDestroyRequest.SerializeToString,
+                '/dsg_example.example_bib_app.PublisherController/Destroy',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.List = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublisherController/List',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherListRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherListResponse.FromString,
+                '/dsg_example.example_bib_app.PublisherController/List',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherListRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherListResponse.FromString,
                 )
         self.PartialUpdate = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublisherController/PartialUpdate',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherPartialUpdateRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+                '/dsg_example.example_bib_app.PublisherController/PartialUpdate',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherPartialUpdateRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
                 )
         self.Retrieve = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublisherController/Retrieve',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+                '/dsg_example.example_bib_app.PublisherController/Retrieve',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
                 )
         self.Update = channel.unary_unary(
-                '/dsg_example.async_example_bib_app.PublisherController/Update',
-                request_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRequest.SerializeToString,
-                response_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+                '/dsg_example.example_bib_app.PublisherController/Update',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
                 )
 
 
@@ -995,37 +995,37 @@ def add_PublisherControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherDestroyRequest.FromString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherDestroyRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherListRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherListResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherListRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherListResponse.SerializeToString,
             ),
             'PartialUpdate': grpc.unary_unary_rpc_method_handler(
                     servicer.PartialUpdate,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherPartialUpdateRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherPartialUpdateRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.SerializeToString,
             ),
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRetrieveRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRequest.FromString,
-                    response_serializer=async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.SerializeToString,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'dsg_example.async_example_bib_app.PublisherController', rpc_method_handlers)
+            'dsg_example.example_bib_app.PublisherController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -1044,9 +1044,9 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublisherController/Create',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Create',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1061,8 +1061,8 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublisherController/Destroy',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherDestroyRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Destroy',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -1078,9 +1078,9 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublisherController/List',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherListRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherListResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/List',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherListRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1095,9 +1095,9 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublisherController/PartialUpdate',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherPartialUpdateRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/PartialUpdate',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherPartialUpdateRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1112,9 +1112,9 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublisherController/Retrieve',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Retrieve',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -1129,8 +1129,8 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.async_example_bib_app.PublisherController/Update',
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherRequest.SerializeToString,
-            async__example__bib__app_dot_grpc_dot_async__example__bib__app__pb2.PublisherResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Update',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

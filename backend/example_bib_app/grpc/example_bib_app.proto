@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package dsg_example.async_example_bib_app;
+package dsg_example.example_bib_app;
 
 import "google/protobuf/empty.proto";
 
