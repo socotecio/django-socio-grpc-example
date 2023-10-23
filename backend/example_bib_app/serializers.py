@@ -23,18 +23,18 @@ from rest_framework.serializers import UUIDField, PrimaryKeyRelatedField
 
 from .models import Author, Publisher, PublicationCategory, Book, Journal
 
-from example_bib_app.grpc.example_bib_app_pb2 import (
-    AuthorResponse,
-    AuthorListResponse,
-    PublisherResponse,
-    PublisherListResponse,
-    PublicationCategoryResponse,
-    PublicationCategoryListResponse,
-    BookResponse,
-    BookListResponse,
-    JournalResponse,
-    JournalListResponse,
-)
+# from example_bib_app.grpc.example_bib_app_pb2 import (
+#     AuthorResponse,
+#     AuthorListResponse,
+#     PublisherResponse,
+#     PublisherListResponse,
+#     PublicationCategoryResponse,
+#     PublicationCategoryListResponse,
+#     BookResponse,
+#     BookListResponse,
+#     JournalResponse,
+#     JournalListResponse,
+# )
 
 
 class AuthorProtoSerializer(proto_serializers.ModelProtoSerializer):
@@ -45,15 +45,15 @@ class AuthorProtoSerializer(proto_serializers.ModelProtoSerializer):
     Attributes:
         model: The Author model class.
         fields: A list of field names to include in the serialized output.
-        proto_class: The protocol buffer message class for a single Author instance.
-        proto_class_list: The protocol buffer message class for a list of Author instances.
+        # proto_class: The protocol buffer message class for a single Author instance.
+        # proto_class_list: The protocol buffer message class for a list of Author instances.
     """
     class Meta:
         model = Author
         fields = ["author_id", "name_first", "name_last", "birth_date"]
 
-        proto_class = AuthorResponse
-        proto_class_list = AuthorListResponse
+        # proto_class = AuthorResponse
+        # proto_class_list = AuthorListResponse
 
 
 class PublisherProtoSerializer(proto_serializers.ModelProtoSerializer):
@@ -79,8 +79,8 @@ class PublisherProtoSerializer(proto_serializers.ModelProtoSerializer):
             "website",
         ]
 
-        proto_class = PublisherResponse
-        proto_class_list = PublisherListResponse
+        # proto_class = PublisherResponse
+        # proto_class_list = PublisherListResponse
 
 
 class PublicationCategoryProtoSerializer(proto_serializers.ModelProtoSerializer):
@@ -91,8 +91,8 @@ class PublicationCategoryProtoSerializer(proto_serializers.ModelProtoSerializer)
         model = PublicationCategory
         fields = ["category_id", "name"]
 
-        proto_class = PublicationCategoryResponse
-        proto_class_list = PublicationCategoryListResponse
+        # proto_class = PublicationCategoryResponse
+        # proto_class_list = PublicationCategoryListResponse
 
 
 class BookProtoSerializer(proto_serializers.ModelProtoSerializer):
@@ -129,8 +129,8 @@ class BookProtoSerializer(proto_serializers.ModelProtoSerializer):
             "publication_date",
         ]
 
-        proto_class = BookResponse
-        proto_class_list = BookListResponse
+        # proto_class = BookResponse
+        # proto_class_list = BookListResponse
 
 
 class JournalProtoSerializer(proto_serializers.ModelProtoSerializer):
@@ -166,5 +166,5 @@ class JournalProtoSerializer(proto_serializers.ModelProtoSerializer):
             "issn",
         ]
 
-        proto_class = JournalResponse
-        proto_class_list = JournalListResponse
+        # proto_class = JournalResponse
+        # proto_class_list = JournalListResponse

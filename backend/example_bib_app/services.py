@@ -53,13 +53,23 @@ class BookService(generics.AsyncModelService):
     filterset_class = BookFilterSet
     serializer_class = BookProtoSerializer
 
-# Book Streaming Service
-# This service is used to stream books to the client.
-# The client can request a stream of books by sending a request with a list of book ids.
-
-class BookStreamingService(generics.AsyncModelService):
-    queryset = Book.objects.all()
-    serializer_class = BookProtoSerializer
+    @grpc_action(
+        response=[
+            {
+                "name": "book",
+                "type": "BookResponse",
+            }
+        ],
+        response_stream=True,
+    )
+    async def StreamAllBooks(self, request, context):
+        """ 
+            Stream all available books to the client.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        for item in queryset:
+            serializer = await self.get_serializer(item)
+            yield serializer.message
 
     @grpc_action(
         request=[
@@ -77,11 +87,14 @@ class BookStreamingService(generics.AsyncModelService):
         request_stream=True,
         response_stream=True,
     )
-    async def Stream(self, request, context):
+    async def StreamBooks(self, request, context):
         for book_id in request.book_ids:
             book = await self.get_object(book_id)
             yield book
 
+# Book Streaming Service
+# This service is used to stream books to the client.
+# The client can request a stream of books by sending a request with a list of book ids.
 
 class JournalService(generics.AsyncModelService):
     queryset = Journal.objects.all()

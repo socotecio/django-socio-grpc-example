@@ -266,6 +266,16 @@ class BookControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
                 )
+        self.StreamAllBooks = channel.unary_stream(
+                '/dsg_example.example_bib_app.BookController/StreamAllBooks',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamAllBooksResponse.FromString,
+                )
+        self.StreamBooks = channel.stream_stream(
+                '/dsg_example.example_bib_app.BookController/StreamBooks',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/Update',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
@@ -306,6 +316,18 @@ class BookControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def StreamAllBooks(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StreamBooks(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -339,6 +361,16 @@ def add_BookControllerServicer_to_server(servicer, server):
                     servicer.Retrieve,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRetrieveRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
+            ),
+            'StreamAllBooks': grpc.unary_stream_rpc_method_handler(
+                    servicer.StreamAllBooks,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamAllBooksResponse.SerializeToString,
+            ),
+            'StreamBooks': grpc.stream_stream_rpc_method_handler(
+                    servicer.StreamBooks,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
@@ -437,6 +469,40 @@ class BookController(object):
         return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Retrieve',
             example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
             example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StreamAllBooks(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.BookController/StreamAllBooks',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamAllBooksResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StreamBooks(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/dsg_example.example_bib_app.BookController/StreamBooks',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
