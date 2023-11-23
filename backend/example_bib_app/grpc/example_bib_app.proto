@@ -19,8 +19,8 @@ service BookController {
     rpc List(BookListRequest) returns (BookListResponse) {}
     rpc PartialUpdate(BookPartialUpdateRequest) returns (BookResponse) {}
     rpc Retrieve(BookRetrieveRequest) returns (BookResponse) {}
-    rpc StreamAllBooks(google.protobuf.Empty) returns (stream BookStreamAllBooksResponse) {}
-    rpc StreamBooks(stream BookStreamBooksRequest) returns (stream BookStreamBooksResponse) {}
+    rpc Stream(BookStreamRequest) returns (stream BookResponse) {}
+    rpc StreamBooksByIDList(stream BookStreamBooksByIDListRequest) returns (stream BookStreamBooksByIDListResponse) {}
     rpc Update(BookRequest) returns (BookResponse) {}
 }
 
@@ -134,16 +134,15 @@ message BookRetrieveRequest {
     string book_id = 1;
 }
 
-message BookStreamAllBooksResponse {
+message BookStreamBooksByIDListRequest {
+    repeated string book_ids = 1;
+}
+
+message BookStreamBooksByIDListResponse {
     BookResponse book = 1;
 }
 
-message BookStreamBooksRequest {
-    string book_ids = 1;
-}
-
-message BookStreamBooksResponse {
-    BookResponse book = 1;
+message BookStreamRequest {
 }
 
 message JournalDestroyRequest {
