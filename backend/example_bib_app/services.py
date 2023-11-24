@@ -72,6 +72,7 @@ class BookService(generics.AsyncModelService, AsyncStreamModelMixin):
     queryset = Book.objects.all()
     filterset_class = BookFilterSet
     serializer_class = BookProtoSerializer
+    search_fields = ('title', 'publication_date', 'authors__name_first', 'authors__name_last', 'publisher__name', 'categories__name', 'isbn')
 
     # @grpc_action(
     #     response=[
