@@ -12,6 +12,7 @@ async def main():
         # create Author gRPC client
         author_client = example_bib_app_pb2_grpc.AuthorControllerStub(channel)
         publisher_client = example_bib_app_pb2_grpc.PublisherControllerStub(channel)
+        publ_cat_client = example_bib_app_pb2_grpc.PublicationCategoryControllerStub(channel)
 
         book_client = example_bib_app_pb2_grpc.BookControllerStub(channel)
 
@@ -45,11 +46,96 @@ async def main():
         )
         print("author update response:", author_response)  # flush=True
 
+
+        # Create three Publisher
+
+        publisher_response = await publisher_client.Create(
+            example_bib_app_pb2.PublisherRequest(
+                name="O'Reilly",
+                address="",
+                city="",
+                state_province="",
+                country="",
+                website="https://www.oreilly.com/",
+            )
+        )
+        print("publisher create response:", publisher_response)
+
+        publisher_response = await publisher_client.Create(
+            example_bib_app_pb2.PublisherRequest(
+                name="Springer",
+                address="",
+                city="",
+                state_province="",
+                country="",
+                website="https://www.springer.com/",
+            )
+        )
+
+        print("publisher create response:", publisher_response)
+
+        publisher_response = await publisher_client.Create(
+            example_bib_app_pb2.PublisherRequest(
+                name="MIT Press",
+                address="",
+                city="",
+                state_province="",
+                country="",
+                website="https://mitpress.mit.edu/",
+            )
+        )
+
+        print("publisher create response:", publisher_response)
+
+        # Create three PublicationCategories
+
+        publication_category_response = await publ_cat_client.Create(
+            example_bib_app_pb2.PublicationCategoryRequest(
+                name="Book",
+            )
+        )
+        print("publication category create response:", publication_category_response)
+        
+        publication_category_response = await publ_cat_client.Create(
+            example_bib_app_pb2.PublicationCategoryRequest(
+                name="Journal",
+            )
+        )
+
+        print("publication category create response:", publication_category_response)
+
+        publication_category_response = await publ_cat_client.Create(
+            example_bib_app_pb2.PublicationCategoryRequest(
+                name="Magazine",
+            )
+        )
+
+        print("publication category create response:", publication_category_response)
+
+        # list all categories
+
+        res = await publisher_client.List(example_bib_app_pb2.PublicationCategoryListRequest())
+        res.results
+        for category in res.results:
+            print(category.name)
+        
+
+        # Create ten Books
+
+        for i in range(10):
+            await book_client.Create(example_bib_app_pb2.BookRequest(title=f'book {i}', 
+                                                                    authors=[author_response.author_id],
+                                                                    isbn=f'isbn-{i}',
+                                                                    publisher=publisher_response.publisher_id,
+                                                                    publication_date=datetime.now().strftime('%Y-%m-%d')
+                                                                    ))
+
         # Stream Read
 
-        async for book in  book_client.Stream(example_bib_app_pb2.BookStreamRequest()):
-            print(book)
+        print("------ Async Stream Read ------")
 
+        async for book in  book_client.Stream(example_bib_app_pb2.BookStreamRequest()):
+            print(book)     
 
 
         # Delete
