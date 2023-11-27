@@ -100,10 +100,16 @@ Best practice want you to generate API in a separate repository or use BSR (Buf 
 Doc are coming to explain the step for the grpc web example
 
 ```
-cp backend/example_bib_app/grpc/*.proto frontend/grpc-web-example/src/api/
+cp backend/example_bib_app/grpc/*.proto frontend/grpc-web-example/proto/
 
-docker build -f frontend/grpc-web-example/src/api/Dockerfile -t dsg-example/grpc-api-generator .
-docker run -v "$(pwd)/frontend/grpc-web-example/src/api:/grpc-api" dsg-example/grpc-api-generator
-
-
+docker compose exec dsg-example-front npx buf generate proto
 ```
+
+npx: Execute package binary
+buf: Package binary used to generate js file
+generate: command of the buf cli
+proto: directory where to find the .proto file
+
+This command should be executed where the buf.gen.yaml file is.
+
+This command generate src/gen/example_bib_app_pb.js file

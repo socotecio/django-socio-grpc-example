@@ -10,6 +10,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@bufbuild/buf": "^1.28.1",
+    "@bufbuild/protobuf": "^1.4.2",
+    "@bufbuild/protoc-gen-es": "^1.4.2",
     "grpc-web": "^1.5.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
