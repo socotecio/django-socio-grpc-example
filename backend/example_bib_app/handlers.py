@@ -33,6 +33,3 @@ def grpc_handlers(server):
     app_registry.register(PublicationCategoryService)
     app_registry.register(BookService)
     app_registry.register(JournalService)
-
-    # QuestionService
-    # app_registry.register(QuestionService)

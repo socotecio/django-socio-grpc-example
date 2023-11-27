@@ -24,7 +24,15 @@ The example is completely containerised, and can be run with docker-compose.
 ### with docker-compose
 
 ```bash
-docker-compose up
+docker-compose up --build
+
+docker compose exec dsg-example-grpc ./manage.py migrate
+
+# TODO load data
+
+docker compose exec dsg-example-grpc python bib_example_client.py
+docker compose exec dsg-example-grpc python bib_example_filter_client.py
+
 ```
 
 ### locally, without docker-compose
