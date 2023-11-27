@@ -113,3 +113,12 @@ proto: directory where to find the .proto file
 This command should be executed where the buf.gen.yaml file is.
 
 This command generate src/gen/example_bib_app_pb.js file
+
+https://github.com/bufbuild/protobuf-es
+https://github.com/bufbuild/protobuf-es/blob/main/docs/generated_code.md
+
+https://connectrpc.com/docs/web/getting-started/
+https://connectrpc.com/docs/web/choosing-a-protocol
+
+https://github.com/connectrpc/connect-es
+

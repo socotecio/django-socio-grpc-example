@@ -34,8 +34,15 @@ from .serializers import (
     BookProtoSerializer,
     JournalProtoSerializer,
 )
+from django_socio_grpc.grpc_actions.placeholders import (
+    FnPlaceholder,
+    LookupField,
+    SelfSerializer,
+    StrTemplatePlaceholder,
+)
 
 from .filters import PublisherFilterSet, BookFilterSet
+
 
 
 class AuthorService(generics.AsyncModelService):

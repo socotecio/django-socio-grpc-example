@@ -7,7 +7,7 @@ static_resources:
   listeners:
   - name: listener_0
     address:
-      socket_address: { address: 0.0.0.0, port_value: 20003 }
+      socket_address: { address: 0.0.0.0, port_value: 9001 }
     filter_chains:
     - filters:
       - name: envoy.filters.network.http_connection_manager
@@ -58,4 +58,4 @@ static_resources:
                 address:
                   socket_address:
                     address: dsg-example-grpc
-                    port_value: 20002
+                    port_value: 50051
