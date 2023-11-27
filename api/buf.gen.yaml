@@ -1,0 +1,33 @@
+# buf generator file
+# buf lint grpc
+# buf generate grpc
+
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: gitlab.com/larasuite/lara-django-data/grpc
+plugins:
+  - plugin: buf.build/protocolbuffers/go
+    out: grpc/go
+    opt: paths=source_relative
+  - plugin: buf.build/bufbuild/connect-go
+    out: grpc/go
+    opt: paths=source_relative
+  - plugin: buf.build/grpc/python:v1.56.0
+    out: grpc/python
+  # dependencies
+  - plugin: buf.build/protocolbuffers/python
+    out: grpc/python
+    #opt: paths=source_relative
+  - plugin: buf.build/bufbuild/connect-es:v0.11.0
+    out: grpc/connect-es
+  # dependencies
+  - plugin: buf.build/bufbuild/es
+    out: grpc/connect-es
+  # - plugin: buf.build/grpc/web:v1.4.2
+  #   out: grpc
+  # dependencies
+  # - plugin: buf.build/protocolbuffers/js
+  #   out: grpc
+
