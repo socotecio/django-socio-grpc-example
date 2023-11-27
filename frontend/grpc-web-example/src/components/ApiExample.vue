@@ -1,26 +1,29 @@
 <script setup>
-import { ref } from 'vue'
-import {AuthorRequest, AuthorListRequest} from '../gen/example_bib_app_pb'
+import { ref, onMounted } from 'vue'
 import { AuthorController } from '../gen/example_bib_app_connect'
 
 import { createPromiseClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
 
 // The transport defines what type of endpoint we're hitting.
-// In our example we'll be communicating with a Connect endpoint.
-// If your endpoint only supports gRPC-web, make sure to use
-// `createGrpcWebTransport` instead.
+// In our example we'll be communicating with a gRPC-web endpoint.
+// See https://connectrpc.com/docs/web/choosing-a-protocol
 const transport = createGrpcWebTransport({
   baseUrl: "http://localhost:9001",
 });
 
 // Here we make the client itself, combining the service
 // definition with the transport.
+// See https://connectrpc.com/docs/web/using-clients
 const authorClient = createPromiseClient(AuthorController, transport);
 
-console.log(authorClient)
-
 let items = ref([])
+
+onMounted(async() => {
+  const res = await authorClient.list({})
+  console.log(res)
+  items.value = res.results
+})
 
 async function createAuthor() {
   const res = await authorClient.create({
@@ -39,7 +42,7 @@ async function createAuthor() {
     <button @click="createAuthor">Create element with grpc-web</button>
     <h3>Elements existings: </h3>
     <ul>
-      <li v-for="item in items">{{ item.name }}</li>
+      <li v-for="item in items">{{ item.nameFirst }} {{ item.nameLast }} {{ item.birthDate }}</li>
     </ul>
   </div>
 </template>
