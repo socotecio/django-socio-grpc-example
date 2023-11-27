@@ -30,19 +30,36 @@ services:
     networks:
       dsg-example-network:
 
-  # envoy:
-  #   build:
-  #     context: ./
-  #     dockerfile: ./envoy/Dockerfile
-  #   image: grpcweb/envoy
-  #   volumes:
-  #     - ./envoy:/etc/envoy
-  #   ports:
-  #     - "30001:9001"
-  #   links:
-  #     - document-grpc
-  #   networks:
-  #     dsg-example-network:
+  envoy:
+    build:
+      context: ./
+      dockerfile: ./envoy/Dockerfile
+    image: grpcweb/envoy
+    volumes:
+      - ./envoy:/etc/envoy
+    ports:
+      - "9001:9001"
+    links:
+      - dsg-example-grpc
+    networks:
+      dsg-example-network:
+
+
+  # ---------------------------- Front -------------------------------------------
+
+  dsg-example-front:
+    image: dsg-example-front
+    container_name: dsg-example-front
+    ports:
+      - "5173:5173"
+    build:
+      context: ./frontend/grpc-web-example
+    volumes:
+      - ./frontend/grpc-web-example:/opt/code
+      - /opt/code/node_modules
+    command: dev -- --host
+    networks:
+      dsg-example-network:
 
 networks:
   dsg-example-network:

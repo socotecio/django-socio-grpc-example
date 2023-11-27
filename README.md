@@ -19,7 +19,7 @@ The example is completely containerised, and can be run with docker-compose.
 
 
 
-## how to run the example
+## how to run the backend example
 
 ### with docker-compose
 
@@ -72,5 +72,38 @@ to visit the django admin page, go to http://localhost:8000/admin
 ### run the gPRC client
 
 ```bash
+
+```
+
+
+
+## how to run the frontend example
+
+### with docker-compose
+
+```bash
+docker-compose up --build
+
+docker compose exec dsg-example-grpc ./manage.py migrate
+
+# TODO load data
+```
+
+Go to http://localhost:5173 and create elements
+
+
+
+## how to update the js file when API update
+
+Best practice want you to generate API in a separate repository or use BSR (Buf Schema Registry) to generate client and API for language. But for helping the understanding of how it work we simplified it to help everyone understand.
+
+Doc are coming to explain the step for the grpc web example
+
+```
+cp backend/example_bib_app/grpc/*.proto frontend/grpc-web-example/src/api/
+
+docker build -f frontend/grpc-web-example/src/api/Dockerfile -t dsg-example/grpc-api-generator .
+docker run -v "$(pwd)/frontend/grpc-web-example/src/api:/grpc-api" dsg-example/grpc-api-generator
+
 
 ```
