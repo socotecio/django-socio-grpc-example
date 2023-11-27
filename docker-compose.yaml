@@ -24,7 +24,7 @@ services:
     volumes:
       - ./backend:/opt/code
     ports:
-      - "9081:50051"
+      - "50051:50051"
     env_file:
       - ./backend/.env
     networks:
