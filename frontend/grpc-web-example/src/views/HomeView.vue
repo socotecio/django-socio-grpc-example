@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import ApiExample from '../components/ApiExample.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <ApiExample />
   </main>
 </template>
