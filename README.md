@@ -19,7 +19,7 @@ The example is completely containerised, and can be run with docker-compose.
 
 
 
-## how to run the example
+## how to run the backend example
 
 ### with docker-compose
 
@@ -74,3 +74,51 @@ to visit the django admin page, go to http://localhost:8000/admin
 ```bash
 
 ```
+
+
+
+## how to run the frontend example
+
+### with docker-compose
+
+```bash
+docker-compose up --build
+
+docker compose exec dsg-example-grpc ./manage.py migrate
+
+# TODO load data
+```
+
+Go to http://localhost:5173 and create elements
+
+
+
+## how to update the js file when API update
+
+Best practice want you to generate API in a separate repository or use BSR (Buf Schema Registry) to generate client and API for language. But for helping the understanding of how it work we simplified it to help everyone understand.
+
+Doc are coming to explain the step for the grpc web example
+
+```
+cp backend/example_bib_app/grpc/*.proto frontend/grpc-web-example/proto/
+
+docker compose exec dsg-example-front npx buf generate proto
+```
+
+npx: Execute package binary
+buf: Package binary used to generate js file
+generate: command of the buf cli
+proto: directory where to find the .proto file
+
+This command should be executed where the buf.gen.yaml file is.
+
+This command generate src/gen/example_bib_app_pb.js file
+
+https://github.com/bufbuild/protobuf-es
+https://github.com/bufbuild/protobuf-es/blob/main/docs/generated_code.md
+
+https://connectrpc.com/docs/web/getting-started/
+https://connectrpc.com/docs/web/choosing-a-protocol
+
+https://github.com/connectrpc/connect-es
+

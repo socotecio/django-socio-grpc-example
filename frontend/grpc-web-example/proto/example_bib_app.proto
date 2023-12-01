@@ -1,0 +1,276 @@
+syntax = "proto3";
+
+package dsg_example.example_bib_app;
+
+import "google/protobuf/empty.proto";
+
+service AuthorController {
+    rpc Create(AuthorRequest) returns (AuthorResponse) {}
+    rpc Destroy(AuthorDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(AuthorListRequest) returns (AuthorListResponse) {}
+    rpc PartialUpdate(AuthorPartialUpdateRequest) returns (AuthorResponse) {}
+    rpc Retrieve(AuthorRetrieveRequest) returns (AuthorResponse) {}
+    rpc Update(AuthorRequest) returns (AuthorResponse) {}
+}
+
+service BookController {
+    rpc Create(BookRequest) returns (BookResponse) {}
+    rpc Destroy(BookDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(BookListRequest) returns (BookListResponse) {}
+    rpc PartialUpdate(BookPartialUpdateRequest) returns (BookResponse) {}
+    rpc Retrieve(BookRetrieveRequest) returns (BookResponse) {}
+    rpc Stream(BookStreamRequest) returns (stream BookResponse) {}
+    rpc StreamBooksByIDList(stream BookStreamBooksByIDListRequest) returns (stream BookStreamBooksByIDListResponse) {}
+    rpc Update(BookRequest) returns (BookResponse) {}
+}
+
+service JournalController {
+    rpc Create(JournalRequest) returns (JournalResponse) {}
+    rpc Destroy(JournalDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(JournalListRequest) returns (JournalListResponse) {}
+    rpc PartialUpdate(JournalPartialUpdateRequest) returns (JournalResponse) {}
+    rpc Retrieve(JournalRetrieveRequest) returns (JournalResponse) {}
+    rpc Update(JournalRequest) returns (JournalResponse) {}
+}
+
+service PublicationCategoryController {
+    rpc Create(PublicationCategoryRequest) returns (PublicationCategoryResponse) {}
+    rpc Destroy(PublicationCategoryDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(PublicationCategoryListRequest) returns (PublicationCategoryListResponse) {}
+    rpc PartialUpdate(PublicationCategoryPartialUpdateRequest) returns (PublicationCategoryResponse) {}
+    rpc Retrieve(PublicationCategoryRetrieveRequest) returns (PublicationCategoryResponse) {}
+    rpc Update(PublicationCategoryRequest) returns (PublicationCategoryResponse) {}
+}
+
+service PublisherController {
+    rpc Create(PublisherRequest) returns (PublisherResponse) {}
+    rpc Destroy(PublisherDestroyRequest) returns (google.protobuf.Empty) {}
+    rpc List(PublisherListRequest) returns (PublisherListResponse) {}
+    rpc PartialUpdate(PublisherPartialUpdateRequest) returns (PublisherResponse) {}
+    rpc Retrieve(PublisherRetrieveRequest) returns (PublisherResponse) {}
+    rpc Update(PublisherRequest) returns (PublisherResponse) {}
+}
+
+message AuthorDestroyRequest {
+    string author_id = 1;
+}
+
+message AuthorListRequest {
+}
+
+message AuthorListResponse {
+    repeated AuthorResponse results = 1;
+}
+
+message AuthorPartialUpdateRequest {
+    string author_id = 1;
+    string name_first = 2;
+    string name_last = 3;
+    string birth_date = 4;
+    repeated string _partial_update_fields = 5;
+}
+
+message AuthorRequest {
+    string author_id = 1;
+    string name_first = 2;
+    string name_last = 3;
+    string birth_date = 4;
+}
+
+message AuthorResponse {
+    string author_id = 1;
+    string name_first = 2;
+    string name_last = 3;
+    string birth_date = 4;
+}
+
+message AuthorRetrieveRequest {
+    string author_id = 1;
+}
+
+message BookDestroyRequest {
+    string book_id = 1;
+}
+
+message BookListRequest {
+}
+
+message BookListResponse {
+    repeated BookResponse results = 1;
+}
+
+message BookPartialUpdateRequest {
+    string book_id = 1;
+    string title = 2;
+    repeated string authors = 3;
+    repeated string categories = 4;
+    optional string isbn = 5;
+    string publisher = 6;
+    string publication_date = 7;
+    repeated string _partial_update_fields = 8;
+}
+
+message BookRequest {
+    string book_id = 1;
+    string title = 2;
+    repeated string authors = 3;
+    repeated string categories = 4;
+    optional string isbn = 5;
+    string publisher = 6;
+    string publication_date = 7;
+}
+
+message BookResponse {
+    string book_id = 1;
+    string title = 2;
+    repeated string authors = 3;
+    repeated string categories = 4;
+    optional string isbn = 5;
+    string publisher = 6;
+    string publication_date = 7;
+}
+
+message BookRetrieveRequest {
+    string book_id = 1;
+}
+
+message BookStreamBooksByIDListRequest {
+    repeated string book_ids = 1;
+}
+
+message BookStreamBooksByIDListResponse {
+    BookResponse book = 1;
+}
+
+message BookStreamRequest {
+}
+
+message JournalDestroyRequest {
+    string journal_id = 1;
+}
+
+message JournalListRequest {
+}
+
+message JournalListResponse {
+    repeated JournalResponse results = 1;
+}
+
+message JournalPartialUpdateRequest {
+    string journal_id = 1;
+    string title = 2;
+    repeated string authors = 3;
+    repeated string categories = 4;
+    string publisher = 5;
+    string publication_date = 6;
+    optional int32 volume = 7;
+    optional int32 issue = 8;
+    optional string issn = 9;
+    repeated string _partial_update_fields = 10;
+}
+
+message JournalRequest {
+    string journal_id = 1;
+    string title = 2;
+    repeated string authors = 3;
+    repeated string categories = 4;
+    string publisher = 5;
+    string publication_date = 6;
+    optional int32 volume = 7;
+    optional int32 issue = 8;
+    optional string issn = 9;
+}
+
+message JournalResponse {
+    string journal_id = 1;
+    string title = 2;
+    repeated string authors = 3;
+    repeated string categories = 4;
+    string publisher = 5;
+    string publication_date = 6;
+    optional int32 volume = 7;
+    optional int32 issue = 8;
+    optional string issn = 9;
+}
+
+message JournalRetrieveRequest {
+    string journal_id = 1;
+}
+
+message PublicationCategoryDestroyRequest {
+    string category_id = 1;
+}
+
+message PublicationCategoryListRequest {
+}
+
+message PublicationCategoryListResponse {
+    repeated PublicationCategoryResponse results = 1;
+}
+
+message PublicationCategoryPartialUpdateRequest {
+    string category_id = 1;
+    string name = 2;
+    repeated string _partial_update_fields = 3;
+}
+
+message PublicationCategoryRequest {
+    string category_id = 1;
+    string name = 2;
+}
+
+message PublicationCategoryResponse {
+    string category_id = 1;
+    string name = 2;
+}
+
+message PublicationCategoryRetrieveRequest {
+    string category_id = 1;
+}
+
+message PublisherDestroyRequest {
+    string publisher_id = 1;
+}
+
+message PublisherListRequest {
+}
+
+message PublisherListResponse {
+    repeated PublisherResponse results = 1;
+}
+
+message PublisherPartialUpdateRequest {
+    string publisher_id = 1;
+    string name = 2;
+    optional string address = 3;
+    optional string city = 4;
+    optional string state_province = 5;
+    optional string country = 6;
+    string website = 7;
+    repeated string _partial_update_fields = 8;
+}
+
+message PublisherRequest {
+    string publisher_id = 1;
+    string name = 2;
+    optional string address = 3;
+    optional string city = 4;
+    optional string state_province = 5;
+    optional string country = 6;
+    string website = 7;
+}
+
+message PublisherResponse {
+    string publisher_id = 1;
+    string name = 2;
+    optional string address = 3;
+    optional string city = 4;
+    optional string state_province = 5;
+    optional string country = 6;
+    string website = 7;
+}
+
+message PublisherRetrieveRequest {
+    string publisher_id = 1;
+}
+
