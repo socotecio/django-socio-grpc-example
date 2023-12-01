@@ -1,0 +1,15 @@
+[project]
+name = "socio_bib_example_grpc"
+description = "gRPC interface to socio_bib_example_grpc"
+version = "0.0.2"
+authors = [
+    { name = "mark doerr", email = "mark.doerr@uni-greifswald.de" }
+]
+dependencies = ["grpcio"]
+
+[project.optional-dependencies]
+dev = ["grpcio-tools"]
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel", "build"]

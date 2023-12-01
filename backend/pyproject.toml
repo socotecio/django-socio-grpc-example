@@ -1,9 +1,9 @@
 [tool.poetry]
-authors = ["Adrien Montagu <adrienmontagu@gmail.com>"]
+authors = ["Adrien Montagu <adrienmontagu@gmail.com>", "mark doerr <mark.doerr@uni-greifswald>"]
 description = "Example for DSG lib"
 license = "Apache-2.0"
-name = "django-socio-grpc-example"
-version = "0.0.1"
+name = "example_bib_app"
+version = "0.0.2"
 
 [tool.poetry.dependencies]
 django = "*"

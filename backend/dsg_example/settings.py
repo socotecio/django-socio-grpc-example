@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_filters",
     "django_socio_grpc",
-    "app_example",
+    "example_bib_app",
 ]
 
 MIDDLEWARE = [
@@ -124,7 +125,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-GRPC_FRAMEWORK = {"ROOT_HANDLERS_HOOK": "app_example.handlers.grpc_handlers"}
+GRPC_FRAMEWORK = {"ROOT_HANDLERS_HOOK": "example_bib_app.handlers.grpc_handlers", 
+                  "DEFAULT_FILTER_BACKENDS": ['django_filters.rest_framework.DjangoFilterBackend'],}
 
 LOGGING = {
     "version": 1,

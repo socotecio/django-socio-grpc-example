@@ -7,7 +7,7 @@ services:
       context: ./backend
     command: /opt/code/manage.py runserver 0.0.0.0:80
     # command: django-admin startproject dsg_example .
-    # command: python manage.py startapp app_example
+    # command: python manage.py startapp async_example_bib_app
     volumes:
       - ./backend:/opt/code
     ports:
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./backend:/opt/code
     ports:
-      - "9081:50051"
+      - "50051:50051"
     env_file:
       - ./backend/.env
     networks:
