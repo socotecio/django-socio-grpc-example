@@ -221,24 +221,24 @@ class AppHandlerRegistryWithModelSignalDispatchers(AppHandlerRegistry):
         self._signal_dispatcher_store = ModelSignalDispatcherStore(app_name)
         super().__init__(app_name, server)
 
-    def get_event_dispatcher(self, model: str) -> ModelSignalDispatcher:
+    def get_model_signal_dispatcher(self, model: str) -> ModelSignalDispatcher:
         return self._signal_dispatcher_store.get_dispatcher_for_model(model)
 
 
-class EventDispatcherMixin(generics.GenericService):
+class ModelSignalDispatcherMixin(generics.GenericService):
     """
-    Mix an EventDispatcher into a GenericService
+    Mix an ModelSignalDispatcher into a GenericService
     """
 
     @property
-    def event_dispatcher(self) -> ModelSignalDispatcher:
+    def model_signal_dispatcher(self) -> ModelSignalDispatcher:
         # maybe there's a more socio-django way of storing/retrieving the
         # event dispatcher for a given model
         # Note: get_service_name() == model, so e.g. "Question"
-        return self._app_handler.get_event_dispatcher(self.get_service_name())
+        return self._app_handler.get_model_signal_dispatcher(self.get_service_name())
 
 
-class SubscribeMixin(EventDispatcherMixin):
+class SubscribeMixin(ModelSignalDispatcherMixin):
     """
     Mixin for creating a service that provides a ``Subscribe()``
     handler.
@@ -251,25 +251,25 @@ class SubscribeMixin(EventDispatcherMixin):
     )
     def Subscribe(self, request, context):
         try:
-            subscription_id = self.event_dispatcher.subscribe(request.signal)
+            subscription_id = self.model_signal_dispatcher.subscribe(request.signal)
 
             # here we can determine if the context is active
             while context.is_active():
                 # consume events one by one, yield, wait for next
-                events = self.event_dispatcher.get_events(subscription_id)
+                events = self.model_signal_dispatcher.get_events(subscription_id)
                 while not events.empty():
                     serializer = self.get_serializer(events.get())
                     # syncronous API needs to yield message
                     yield serializer.message
 
-                self.event_dispatcher.wait(subscription_id)
+                self.model_signal_dispatcher.wait(subscription_id)
 
         except Exception as e:
             print("GRPC Subscribe failed:", e)
             raise e
 
 
-class AsyncSubscribeMixin(EventDispatcherMixin):
+class AsyncSubscribeMixin(ModelSignalDispatcherMixin):
     """
     Mixin for creating an asnyc model service that provides a ``Subscribe()``
     handler.
@@ -282,20 +282,20 @@ class AsyncSubscribeMixin(EventDispatcherMixin):
     )
     async def Subscribe(self, request, context):
         try:
-            subscription_id = self.event_dispatcher.subscribe(request.signal)
+            subscription_id = self.model_signal_dispatcher.subscribe(request.signal)
 
             # TODO the coroutine is cancelled when the client hangs up, so we
-            # introduce a heartbeat mechanism at the event_dispatcher
+            # introduce a heartbeat mechanism at the model_signal_dispatcher
             while True:
                 # consume events one by one, yield, wait for next
-                events = self.event_dispatcher.get_events(subscription_id)
+                events = self.model_signal_dispatcher.get_events(subscription_id)
                 while not events.empty():
                     serializer = await self.aget_serializer(events.get())
 
                     # async context has a write function
                     await context.write(await serializer.amessage)
 
-                await self.event_dispatcher.a_wait(subscription_id)
+                await self.model_signal_dispatcher.a_wait(subscription_id)
 
         except Exception as e:
             print("GRPC Subscribe failed:", e)
