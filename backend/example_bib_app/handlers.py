@@ -16,7 +16,11 @@ To improve the readability of the code, the `register` method calls could be gro
 it easier to see which services are being registered. Additionally, the commented-out `QuestionService` registration could be removed if the class is not needed.
 """
 
-from django_socio_grpc.services.app_handler_registry import AppHandlerRegistry
+# swap out the registry to get one that holds dispatchers for django signals
+# Note: while we put the store in the AppHandlerRegistry, it would be ok someplace else,
+# as long as it stays single instance per app.
+from .subscriptions import AppHandlerRegistryWithModelSignalDispatchers
+
 from example_bib_app.services import (
     AuthorService,
     PublisherService,
@@ -27,7 +31,7 @@ from example_bib_app.services import (
 
 
 def grpc_handlers(server):
-    app_registry = AppHandlerRegistry("example_bib_app", server)
+    app_registry = AppHandlerRegistryWithModelSignalDispatchers("example_bib_app", server)
     app_registry.register(AuthorService)
     app_registry.register(PublisherService)
     app_registry.register(PublicationCategoryService)

@@ -40,6 +40,11 @@ class AuthorControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
                 )
+        self.Subscribe = channel.unary_stream(
+                '/dsg_example.example_bib_app.AuthorController/Subscribe',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/Update',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
@@ -80,6 +85,12 @@ class AuthorControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Subscribe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -112,6 +123,11 @@ def add_AuthorControllerServicer_to_server(servicer, server):
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.SerializeToString,
+            ),
+            'Subscribe': grpc.unary_stream_rpc_method_handler(
+                    servicer.Subscribe,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
@@ -215,6 +231,23 @@ class AuthorController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def Subscribe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.AuthorController/Subscribe',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def Update(request,
             target,
             options=(),
@@ -276,6 +309,11 @@ class BookControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksByIDListRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksByIDListResponse.FromString,
                 )
+        self.Subscribe = channel.unary_stream(
+                '/dsg_example.example_bib_app.BookController/Subscribe',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/Update',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
@@ -328,6 +366,12 @@ class BookControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Subscribe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -371,6 +415,11 @@ def add_BookControllerServicer_to_server(servicer, server):
                     servicer.StreamBooksByIDList,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksByIDListRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookStreamBooksByIDListResponse.SerializeToString,
+            ),
+            'Subscribe': grpc.unary_stream_rpc_method_handler(
+                    servicer.Subscribe,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
@@ -507,6 +556,23 @@ class BookController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def Subscribe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.BookController/Subscribe',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def Update(request,
             target,
             options=(),
@@ -558,6 +624,11 @@ class JournalControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
                 )
+        self.Subscribe = channel.unary_stream(
+                '/dsg_example.example_bib_app.JournalController/Subscribe',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.JournalController/Update',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
@@ -598,6 +669,12 @@ class JournalControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Subscribe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -630,6 +707,11 @@ def add_JournalControllerServicer_to_server(servicer, server):
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.SerializeToString,
+            ),
+            'Subscribe': grpc.unary_stream_rpc_method_handler(
+                    servicer.Subscribe,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
@@ -733,6 +815,23 @@ class JournalController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def Subscribe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.JournalController/Subscribe',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.JournalResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def Update(request,
             target,
             options=(),
@@ -784,6 +883,11 @@ class PublicationCategoryControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
                 )
+        self.Subscribe = channel.unary_stream(
+                '/dsg_example.example_bib_app.PublicationCategoryController/Subscribe',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublicationCategoryController/Update',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
@@ -824,6 +928,12 @@ class PublicationCategoryControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Subscribe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -856,6 +966,11 @@ def add_PublicationCategoryControllerServicer_to_server(servicer, server):
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
+            ),
+            'Subscribe': grpc.unary_stream_rpc_method_handler(
+                    servicer.Subscribe,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
@@ -959,6 +1074,23 @@ class PublicationCategoryController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def Subscribe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Subscribe',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def Update(request,
             target,
             options=(),
@@ -1010,6 +1142,11 @@ class PublisherControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
                 )
+        self.Subscribe = channel.unary_stream(
+                '/dsg_example.example_bib_app.PublisherController/Subscribe',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
+                )
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublisherController/Update',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
@@ -1050,6 +1187,12 @@ class PublisherControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Subscribe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Update(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -1082,6 +1225,11 @@ def add_PublisherControllerServicer_to_server(servicer, server):
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRetrieveRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.SerializeToString,
+            ),
+            'Subscribe': grpc.unary_stream_rpc_method_handler(
+                    servicer.Subscribe,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
@@ -1180,6 +1328,23 @@ class PublisherController(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Retrieve',
             example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Subscribe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.PublisherController/Subscribe',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.SubscriptionRequest.SerializeToString,
             example__bib__app_dot_grpc_dot_example__bib__app__pb2.PublisherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -23,6 +23,9 @@ from rest_framework.serializers import UUIDField, PrimaryKeyRelatedField
 
 from .models import Author, Publisher, PublicationCategory, Book, Journal
 
+# forward import for dynamic serializer resolution
+from .subscriptions import SubscriptionProtoSerializer
+
 from example_bib_app.grpc.example_bib_app_pb2 import (
     AuthorResponse,
     AuthorListResponse,

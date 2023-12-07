@@ -43,9 +43,10 @@ from django_socio_grpc.grpc_actions.placeholders import (
 
 from .filters import PublisherFilterSet, BookFilterSet
 
+# depending on which mode you want to run (async/sync), choose the right model.
+from .subscriptions import AsyncModelServiceWithSubscribe
 
-
-class AuthorService(generics.AsyncModelService):
+class AuthorService(AsyncModelServiceWithSubscribe):
     queryset = Author.objects.all()
 
     # filterset_fields allows for filtering of the queryset, only based on exact matches.
@@ -57,7 +58,7 @@ class AuthorService(generics.AsyncModelService):
     serializer_class = AuthorProtoSerializer
 
 
-class PublisherService(generics.AsyncModelService):
+class PublisherService(AsyncModelServiceWithSubscribe):
     queryset = Publisher.objects.all()
 
     # the optional filterset_class allows for filtering of the queryset (s. filter client example)
@@ -66,12 +67,12 @@ class PublisherService(generics.AsyncModelService):
     serializer_class = PublisherProtoSerializer
 
 
-class PublicationCategoryService(generics.AsyncModelService):
+class PublicationCategoryService(AsyncModelServiceWithSubscribe):
     queryset = PublicationCategory.objects.all()
     serializer_class = PublicationCategoryProtoSerializer
 
 
-class BookService(generics.AsyncModelService, AsyncStreamModelMixin):
+class BookService(AsyncModelServiceWithSubscribe, AsyncStreamModelMixin):
     # Book Streaming Service
     # This service is used to stream books to the client.
     # The client can request a stream of books by sending a request with a list of book ids.
@@ -123,7 +124,7 @@ class BookService(generics.AsyncModelService, AsyncStreamModelMixin):
             yield book
 
 
-class JournalService(generics.AsyncModelService):
+class JournalService(AsyncModelServiceWithSubscribe):
     queryset = Journal.objects.all()
     serializer_class = JournalProtoSerializer
 

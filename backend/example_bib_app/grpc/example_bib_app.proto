@@ -10,6 +10,7 @@ service AuthorController {
     rpc List(AuthorListRequest) returns (AuthorListResponse) {}
     rpc PartialUpdate(AuthorPartialUpdateRequest) returns (AuthorResponse) {}
     rpc Retrieve(AuthorRetrieveRequest) returns (AuthorResponse) {}
+    rpc Subscribe(SubscriptionRequest) returns (stream AuthorResponse) {}
     rpc Update(AuthorRequest) returns (AuthorResponse) {}
 }
 
@@ -21,6 +22,7 @@ service BookController {
     rpc Retrieve(BookRetrieveRequest) returns (BookResponse) {}
     rpc Stream(BookStreamRequest) returns (stream BookResponse) {}
     rpc StreamBooksByIDList(stream BookStreamBooksByIDListRequest) returns (stream BookStreamBooksByIDListResponse) {}
+    rpc Subscribe(SubscriptionRequest) returns (stream BookResponse) {}
     rpc Update(BookRequest) returns (BookResponse) {}
 }
 
@@ -30,6 +32,7 @@ service JournalController {
     rpc List(JournalListRequest) returns (JournalListResponse) {}
     rpc PartialUpdate(JournalPartialUpdateRequest) returns (JournalResponse) {}
     rpc Retrieve(JournalRetrieveRequest) returns (JournalResponse) {}
+    rpc Subscribe(SubscriptionRequest) returns (stream JournalResponse) {}
     rpc Update(JournalRequest) returns (JournalResponse) {}
 }
 
@@ -39,6 +42,7 @@ service PublicationCategoryController {
     rpc List(PublicationCategoryListRequest) returns (PublicationCategoryListResponse) {}
     rpc PartialUpdate(PublicationCategoryPartialUpdateRequest) returns (PublicationCategoryResponse) {}
     rpc Retrieve(PublicationCategoryRetrieveRequest) returns (PublicationCategoryResponse) {}
+    rpc Subscribe(SubscriptionRequest) returns (stream PublicationCategoryResponse) {}
     rpc Update(PublicationCategoryRequest) returns (PublicationCategoryResponse) {}
 }
 
@@ -48,6 +52,7 @@ service PublisherController {
     rpc List(PublisherListRequest) returns (PublisherListResponse) {}
     rpc PartialUpdate(PublisherPartialUpdateRequest) returns (PublisherResponse) {}
     rpc Retrieve(PublisherRetrieveRequest) returns (PublisherResponse) {}
+    rpc Subscribe(SubscriptionRequest) returns (stream PublisherResponse) {}
     rpc Update(PublisherRequest) returns (PublisherResponse) {}
 }
 
@@ -272,5 +277,9 @@ message PublisherResponse {
 
 message PublisherRetrieveRequest {
     string publisher_id = 1;
+}
+
+message SubscriptionRequest {
+    string signal = 1;
 }
 
