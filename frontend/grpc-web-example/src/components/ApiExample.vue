@@ -9,7 +9,7 @@ import { createGrpcWebTransport } from "@connectrpc/connect-web";
 // In our example we'll be communicating with a gRPC-web endpoint.
 // See https://connectrpc.com/docs/web/choosing-a-protocol
 const transport = createGrpcWebTransport({
-  baseUrl: "http://localhost:9001",
+  baseUrl: "http://localhost:9991",
 });
 
 // Here we make the client itself, combining the service

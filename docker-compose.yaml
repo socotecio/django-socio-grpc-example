@@ -38,7 +38,7 @@ services:
     volumes:
       - ./envoy:/etc/envoy
     ports:
-      - "9001:9001"
+      - "9991:9001"
     links:
       - dsg-example-grpc
     networks:

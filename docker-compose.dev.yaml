@@ -1,0 +1,21 @@
+
+version: "3.1"
+
+services:
+  envoy:
+    build:
+      context: ./
+      dockerfile: ./envoy/Dockerfile
+    image: grpcweb/envoy
+    volumes:
+      - ./envoy:/etc/envoy
+    ports:
+      - "9991:9001"
+    links:
+      - dsg-example-grpc
+    networks:
+      dsg-example-network:
+
+
+networks:
+  dsg-example-network:
