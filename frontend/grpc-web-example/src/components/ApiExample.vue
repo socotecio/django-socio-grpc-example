@@ -39,6 +39,9 @@ async function createAuthor() {
 <template>
   <div class="greetings">
     <h1 class="green">gRPC Web Example</h1>
+
+    <p>Hello world 1</p>
+
     <button @click="createAuthor">Create element with grpc-web</button>
     <h3>Elements existings: </h3>
     <ul>

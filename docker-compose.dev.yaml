@@ -2,20 +2,54 @@
 version: "3.1"
 
 services:
+  # dsg-example-back:
+  #   build:
+  #     context: ./backend
+  #   command: /opt/code/manage.py runserver 0.0.0.0:80
+  #   # command: django-admin startproject dsg_example .
+  #   # command: python manage.py startapp async_example_bib_app
+  #   volumes:
+  #     - ./backend:/opt/code
+  #   ports:
+  #     - "9080:80"
+  #   env_file:
+  #     - ./backend/.env
+  #   networks:
+  #     dsg-example-network:
+
+  # dsg-example-grpc:
+  #   build:
+  #     context: ./backend
+  #   command: /opt/code/manage.py grpcrunaioserver --dev
+  #   volumes:
+  #     - ./backend:/opt/code
+  #   ports:
+  #     - "50051:50051"
+  #   env_file:
+  #     - ./backend/.env
+  #   networks:
+  #     dsg-example-network:
+
   envoy:
     build:
       context: ./
-      dockerfile: ./envoy/Dockerfile
+      dockerfile: ./envoy/Dockerfile-dev
     image: grpcweb/envoy
     volumes:
       - ./envoy:/etc/envoy
-    ports:
-      - "9991:9001"
-    links:
-      - dsg-example-grpc
+    # ports:
+    #   - "9991:9001"
+    # links:
+    #   - dsg-example-grpc
+    #network_mode: host
+    #network_mode: bridge
+
     networks:
-      dsg-example-network:
+      - dsg-example-network
+      - lan_access
 
 
 networks:
   dsg-example-network:
+  lan_access:
+      driver: bridge
