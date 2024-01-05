@@ -63,25 +63,25 @@ message AuthorListResponse {
 }
 
 message AuthorPartialUpdateRequest {
-    string author_id = 1;
+    optional string author_id = 1;
     string name_first = 2;
     string name_last = 3;
-    string birth_date = 4;
+    optional string birth_date = 4;
     repeated string _partial_update_fields = 5;
 }
 
 message AuthorRequest {
-    string author_id = 1;
+    optional string author_id = 1;
     string name_first = 2;
     string name_last = 3;
-    string birth_date = 4;
+    optional string birth_date = 4;
 }
 
 message AuthorResponse {
-    string author_id = 1;
+    optional string author_id = 1;
     string name_first = 2;
     string name_last = 3;
-    string birth_date = 4;
+    optional string birth_date = 4;
 }
 
 message AuthorRetrieveRequest {
@@ -100,34 +100,34 @@ message BookListResponse {
 }
 
 message BookPartialUpdateRequest {
-    string book_id = 1;
+    optional string book_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     optional string isbn = 5;
     string publisher = 6;
-    string publication_date = 7;
+    optional string publication_date = 7;
     repeated string _partial_update_fields = 8;
 }
 
 message BookRequest {
-    string book_id = 1;
+    optional string book_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     optional string isbn = 5;
     string publisher = 6;
-    string publication_date = 7;
+    optional string publication_date = 7;
 }
 
 message BookResponse {
-    string book_id = 1;
+    optional string book_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     optional string isbn = 5;
     string publisher = 6;
-    string publication_date = 7;
+    optional string publication_date = 7;
 }
 
 message BookRetrieveRequest {
@@ -157,12 +157,12 @@ message JournalListResponse {
 }
 
 message JournalPartialUpdateRequest {
-    string journal_id = 1;
+    optional string journal_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    string publication_date = 6;
+    optional string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
@@ -170,24 +170,24 @@ message JournalPartialUpdateRequest {
 }
 
 message JournalRequest {
-    string journal_id = 1;
+    optional string journal_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    string publication_date = 6;
+    optional string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
 }
 
 message JournalResponse {
-    string journal_id = 1;
+    optional string journal_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    string publication_date = 6;
+    optional string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
@@ -209,18 +209,18 @@ message PublicationCategoryListResponse {
 }
 
 message PublicationCategoryPartialUpdateRequest {
-    string category_id = 1;
+    optional string category_id = 1;
     string name = 2;
     repeated string _partial_update_fields = 3;
 }
 
 message PublicationCategoryRequest {
-    string category_id = 1;
+    optional string category_id = 1;
     string name = 2;
 }
 
 message PublicationCategoryResponse {
-    string category_id = 1;
+    optional string category_id = 1;
     string name = 2;
 }
 
@@ -240,7 +240,7 @@ message PublisherListResponse {
 }
 
 message PublisherPartialUpdateRequest {
-    string publisher_id = 1;
+    optional string publisher_id = 1;
     string name = 2;
     optional string address = 3;
     optional string city = 4;
@@ -251,7 +251,7 @@ message PublisherPartialUpdateRequest {
 }
 
 message PublisherRequest {
-    string publisher_id = 1;
+    optional string publisher_id = 1;
     string name = 2;
     optional string address = 3;
     optional string city = 4;
@@ -261,7 +261,7 @@ message PublisherRequest {
 }
 
 message PublisherResponse {
-    string publisher_id = 1;
+    optional string publisher_id = 1;
     string name = 2;
     optional string address = 3;
     optional string city = 4;
