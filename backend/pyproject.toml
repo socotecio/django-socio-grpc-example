@@ -13,14 +13,18 @@ django-filter = "*"
 django-socio-grpc = {version = "*"}
 djangorestframework = "*"
 python = ">=3.9,<3.12"
+aiohttp = "^3.9.3"
 
 [tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
 gunicorn = "*"
 black = "*"
 flake8 = "*"
 isort = "*"
 pytest = "*"
 pytest-django = "*"
+notebook = "^7.0.7"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"

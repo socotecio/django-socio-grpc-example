@@ -2,6 +2,14 @@ version: "3.1"
 
 services:
 
+  database:
+    image: postgres:16.1
+    command: postgres -c 'max_connections=1000'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
   dsg-example-back:
     build:
       context: ./backend
@@ -14,21 +22,17 @@ services:
       - "9080:80"
     env_file:
       - ./backend/.env
-    networks:
-      dsg-example-network:
 
   dsg-example-grpc:
     build:
       context: ./backend
-    command: /opt/code/manage.py grpcrunaioserver --dev
+    command: /opt/code/manage.py grpcrunaioserver
     volumes:
       - ./backend:/opt/code
     ports:
       - "50051:50051"
     env_file:
       - ./backend/.env
-    networks:
-      dsg-example-network:
 
   envoy:
     build:
@@ -39,10 +43,6 @@ services:
       - ./envoy:/etc/envoy
     ports:
       - "9001:9001"
-    links:
-      - dsg-example-grpc
-    networks:
-      dsg-example-network:
 
 
   # ---------------------------- Front -------------------------------------------
@@ -58,8 +58,3 @@ services:
       - ./frontend/grpc-web-example:/opt/code
       - /opt/code/node_modules
     command: dev -- --host
-    networks:
-      dsg-example-network:
-
-networks:
-  dsg-example-network:

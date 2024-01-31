@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from example_bib_app.views import BookViewSet
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-]
+router = DefaultRouter()
+router.register(r"books", BookViewSet)
+urlpatterns = [path("admin/", admin.site.urls), *router.urls]

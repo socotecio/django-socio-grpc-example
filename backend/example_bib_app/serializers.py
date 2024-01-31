@@ -20,6 +20,7 @@ Additionally, the `Meta` classes could be made more concise by using the `fields
 
 from django_socio_grpc import proto_serializers
 from rest_framework.serializers import UUIDField, PrimaryKeyRelatedField
+from rest_framework import serializers
 
 from .models import Author, Publisher, PublicationCategory, Book, Journal
 
@@ -48,6 +49,7 @@ class AuthorProtoSerializer(proto_serializers.ModelProtoSerializer):
         proto_class: The protocol buffer message class for a single Author instance.
         proto_class_list: The protocol buffer message class for a list of Author instances.
     """
+
     class Meta:
         model = Author
         fields = ["author_id", "name_first", "name_last", "birth_date"]
@@ -67,6 +69,7 @@ class PublisherProtoSerializer(proto_serializers.ModelProtoSerializer):
         Meta: A class that contains metadata about the serializer, such as the model it
             serializes, the fields to include, and the protocol buffer messages to use.
     """
+
     class Meta:
         model = Publisher
         fields = [
@@ -87,6 +90,7 @@ class PublicationCategoryProtoSerializer(proto_serializers.ModelProtoSerializer)
     """
     Serializer for the PublicationCategory model that converts it to a Protocol Buffer message.
     """
+
     class Meta:
         model = PublicationCategory
         fields = ["category_id", "name"]
@@ -133,10 +137,46 @@ class BookProtoSerializer(proto_serializers.ModelProtoSerializer):
         proto_class_list = BookListResponse
 
 
+class BookSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Book model that converts the model instance to a protobuf message.
+    This serializer defines the fields that should be included in the protobuf message and how they should be serialized.
+    """
+
+    # serialisation of a many-to-many field with a UUIDField as the primary key
+    categories = PrimaryKeyRelatedField(
+        queryset=PublicationCategory.objects.all(),
+        pk_field=UUIDField(format="hex_verbose"),
+        many=True,
+    )
+    authors = PrimaryKeyRelatedField(
+        queryset=Author.objects.all(),
+        pk_field=UUIDField(format="hex_verbose"),
+        many=True,
+    )
+
+    publisher = PrimaryKeyRelatedField(
+        queryset=Publisher.objects.all(), pk_field=UUIDField(format="hex_verbose")
+    )
+
+    class Meta:
+        model = Book
+        fields = [
+            "book_id",
+            "title",
+            "authors",
+            "categories",
+            "isbn",
+            "publisher",
+            "publication_date",
+        ]
+
+
 class JournalProtoSerializer(proto_serializers.ModelProtoSerializer):
     """
     Serializer for the Journal model that converts the model instance to a Protocol Buffer message.
     """
+
     categories = PrimaryKeyRelatedField(
         queryset=PublicationCategory.objects.all(),
         pk_field=UUIDField(format="hex_verbose"),
