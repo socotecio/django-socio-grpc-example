@@ -1,3 +1,9 @@
+# to make the django migrations in the docker container, run the following command
+# docker-compose exec dsg-example-back python manage.py migrate
+# docker-compose exec dsg-example-back python manage.py createsuperuser
+
+
+
 version: "3.1"
 
 services:
@@ -5,6 +11,8 @@ services:
   database:
     image: postgres:16.1
     command: postgres -c 'max_connections=1000'
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -20,6 +28,8 @@ services:
       - ./backend:/opt/code
     ports:
       - "9080:80"
+    depends_on:
+      - database
     env_file:
       - ./backend/.env
 
@@ -33,6 +43,8 @@ services:
       - "50051:50051"
     env_file:
       - ./backend/.env
+    depends_on:
+      - database
 
   envoy:
     build:
@@ -42,7 +54,7 @@ services:
     volumes:
       - ./envoy:/etc/envoy
     ports:
-      - "9001:9001"
+      - "9901:9001"
 
 
   # ---------------------------- Front -------------------------------------------
