@@ -5,6 +5,7 @@ package dsg_example.example_bib_app;
 import "google/protobuf/empty.proto";
 
 service AuthorController {
+    rpc BulkCreate(AuthorListRequest) returns (AuthorListResponse) {}
     rpc Create(AuthorRequest) returns (AuthorResponse) {}
     rpc Destroy(AuthorDestroyRequest) returns (google.protobuf.Empty) {}
     rpc List(AuthorListRequest) returns (AuthorListResponse) {}
@@ -56,6 +57,7 @@ message AuthorDestroyRequest {
 }
 
 message AuthorListRequest {
+    repeated AuthorRequest results = 1;
 }
 
 message AuthorListResponse {
@@ -63,25 +65,25 @@ message AuthorListResponse {
 }
 
 message AuthorPartialUpdateRequest {
-    optional string author_id = 1;
+    string author_id = 1;
     string name_first = 2;
     string name_last = 3;
-    optional string birth_date = 4;
+    string birth_date = 4;
     repeated string _partial_update_fields = 5;
 }
 
 message AuthorRequest {
-    optional string author_id = 1;
+    string author_id = 1;
     string name_first = 2;
     string name_last = 3;
-    optional string birth_date = 4;
+    string birth_date = 4;
 }
 
 message AuthorResponse {
-    optional string author_id = 1;
+    string author_id = 1;
     string name_first = 2;
     string name_last = 3;
-    optional string birth_date = 4;
+    string birth_date = 4;
 }
 
 message AuthorRetrieveRequest {
@@ -100,34 +102,34 @@ message BookListResponse {
 }
 
 message BookPartialUpdateRequest {
-    optional string book_id = 1;
+    string book_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     optional string isbn = 5;
     string publisher = 6;
-    optional string publication_date = 7;
+    string publication_date = 7;
     repeated string _partial_update_fields = 8;
 }
 
 message BookRequest {
-    optional string book_id = 1;
+    string book_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     optional string isbn = 5;
     string publisher = 6;
-    optional string publication_date = 7;
+    string publication_date = 7;
 }
 
 message BookResponse {
-    optional string book_id = 1;
+    string book_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     optional string isbn = 5;
     string publisher = 6;
-    optional string publication_date = 7;
+    string publication_date = 7;
 }
 
 message BookRetrieveRequest {
@@ -157,12 +159,12 @@ message JournalListResponse {
 }
 
 message JournalPartialUpdateRequest {
-    optional string journal_id = 1;
+    string journal_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    optional string publication_datetime = 6;
+    string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
@@ -170,24 +172,24 @@ message JournalPartialUpdateRequest {
 }
 
 message JournalRequest {
-    optional string journal_id = 1;
+    string journal_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    optional string publication_datetime = 6;
+    string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
 }
 
 message JournalResponse {
-    optional string journal_id = 1;
+    string journal_id = 1;
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    optional string publication_datetime = 6;
+    string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
@@ -209,18 +211,18 @@ message PublicationCategoryListResponse {
 }
 
 message PublicationCategoryPartialUpdateRequest {
-    optional string category_id = 1;
+    string category_id = 1;
     string name = 2;
     repeated string _partial_update_fields = 3;
 }
 
 message PublicationCategoryRequest {
-    optional string category_id = 1;
+    string category_id = 1;
     string name = 2;
 }
 
 message PublicationCategoryResponse {
-    optional string category_id = 1;
+    string category_id = 1;
     string name = 2;
 }
 
@@ -240,7 +242,7 @@ message PublisherListResponse {
 }
 
 message PublisherPartialUpdateRequest {
-    optional string publisher_id = 1;
+    string publisher_id = 1;
     string name = 2;
     optional string address = 3;
     optional string city = 4;
@@ -251,7 +253,7 @@ message PublisherPartialUpdateRequest {
 }
 
 message PublisherRequest {
-    optional string publisher_id = 1;
+    string publisher_id = 1;
     string name = 2;
     optional string address = 3;
     optional string city = 4;
@@ -261,7 +263,7 @@ message PublisherRequest {
 }
 
 message PublisherResponse {
-    optional string publisher_id = 1;
+    string publisher_id = 1;
     string name = 2;
     optional string address = 3;
     optional string city = 4;

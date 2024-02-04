@@ -15,6 +15,11 @@ class AuthorControllerStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.BulkCreate = channel.unary_unary(
+                '/dsg_example.example_bib_app.AuthorController/BulkCreate',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListRequest.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListResponse.FromString,
+                )
         self.Create = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/Create',
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
@@ -49,6 +54,12 @@ class AuthorControllerStub(object):
 
 class AuthorControllerServicer(object):
     """Missing associated documentation comment in .proto file."""
+
+    def BulkCreate(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def Create(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -89,6 +100,11 @@ class AuthorControllerServicer(object):
 
 def add_AuthorControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'BulkCreate': grpc.unary_unary_rpc_method_handler(
+                    servicer.BulkCreate,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListRequest.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListResponse.SerializeToString,
+            ),
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorRequest.FromString,
@@ -128,6 +144,23 @@ def add_AuthorControllerServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class AuthorController(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def BulkCreate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/BulkCreate',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListRequest.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.AuthorListResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Create(request,
