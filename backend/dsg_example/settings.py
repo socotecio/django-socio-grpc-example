@@ -79,7 +79,7 @@ WSGI_APPLICATION = "dsg_example.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / "books_db.sqlite3",
     }
 }
 
