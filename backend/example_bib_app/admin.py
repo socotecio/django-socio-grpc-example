@@ -44,5 +44,5 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(Journal)
 class JournalAdmin(admin.ModelAdmin):
-    list_display = ('title', 'publisher', 'publication_date', 'volume', 'issue', 'issn')
+    list_display = ('title', 'publisher', 'publication_datetime', 'volume', 'issue', 'issn')
 
