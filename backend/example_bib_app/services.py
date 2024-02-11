@@ -23,6 +23,7 @@ import asyncio
 from django_socio_grpc import generics
 from django_socio_grpc.mixins import AsyncStreamModelMixin
 from django_socio_grpc.decorators import grpc_action
+from asgiref.sync import sync_to_async
 
 import io
 import grpc
@@ -125,6 +126,46 @@ class BookService(generics.AsyncModelService, AsyncStreamModelMixin):
             book = await self.get_object(book_id)
             yield book
 
+    @grpc_action(
+        request=[{"name": "filename", "type": "string"},
+                 {"name": "book_id", "type": "string"},
+                 {"name": "data", "type": "bytes"}],
+        request_name="FileChunk",
+        response=[{"name": "success", "type": "bool"}],
+        response_name="UploadStatus",
+        request_stream=True,
+    )
+    async def UpdateImage(self, request, context):
+        print("File upload started")
+
+        try:
+            with io.BytesIO() as f:
+                async for file_chunk in request:
+                    book_id = file_chunk.book_id
+                    filename = file_chunk.filename
+                    print("Reading file chunk:", len(file_chunk.data))
+                    f.write(file_chunk.data)
+            
+                queryset = self.get_queryset()
+
+                book = await sync_to_async(queryset.get)(book_id=book_id) 
+
+                print("----- found:", book.title)
+                res = await sync_to_async(book.image.save)(filename, f, save=True)
+                print("----- saved:", res)
+
+                f.seek(0)
+                file_content = f.getvalue()
+            
+            print(f"File upload successful: {len(file_content)} bytes")
+            return exbib_pb2.UploadStatus(success=True)
+
+        except Exception as e:
+            print("Document upload has failed…")
+            print(e)
+            #LOGGER.exception("Document upload has failed…")
+            return exbib_pb2.UploadStatus(success=False)
+
 
 class JournalService(generics.AsyncModelService):
     queryset = Journal.objects.all()
@@ -140,37 +181,3 @@ class JournalService(generics.AsyncModelService):
         "categories__name",
         "issn",
     )
-
-class FileUploadService(generics.AsyncCreateService):
-    queryset = Book.objects.all()
-    filterset_class = BookFilterSet
-    serializer_class = BookProtoSerializer
-
-    @grpc_action(
-        request=[{"name": "data", "type": "bytes"}],
-        request_name="FileChunk",
-        response=[{"name": "success", "type": "bool"}],
-        response_name="UploadStatus",
-        request_stream=True,
-    )
-    async def UploadFile(self, request, context):
-        print("File upload started")
-
-        try:
-            with io.BytesIO() as f:
-                async for file_chunk in request:
-                    print("Reading file chunk:", len(file_chunk.data))
-                    f.write(file_chunk.data)
-
-                f.seek(0)
-                file_content = f.getvalue()
-
-            print(f"File upload successful: {len(file_content)} bytes")
-            return exbib_pb2.UploadStatus(success=True)
-
-        except Exception as e:
-            print("Document upload has failed…")
-            print(e)
-            #LOGGER.exception("Document upload has failed…")
-            return exbib_pb2.UploadStatus(success=False)
-
