@@ -524,6 +524,67 @@ class BookController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
+class FileUploadControllerStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.UploadFile = channel.stream_unary(
+                '/dsg_example.example_bib_app.FileUploadController/UploadFile',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.FileChunk.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.UploadStatus.FromString,
+                )
+
+
+class FileUploadControllerServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def UploadFile(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_FileUploadControllerServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'UploadFile': grpc.stream_unary_rpc_method_handler(
+                    servicer.UploadFile,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.FileChunk.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.UploadStatus.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'dsg_example.example_bib_app.FileUploadController', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class FileUploadController(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def UploadFile(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/dsg_example.example_bib_app.FileUploadController/UploadFile',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.FileChunk.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.UploadStatus.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
 class JournalControllerStub(object):
     """Missing associated documentation comment in .proto file."""
 

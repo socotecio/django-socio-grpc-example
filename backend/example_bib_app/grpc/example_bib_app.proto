@@ -24,6 +24,10 @@ service BookController {
     rpc Update(BookRequest) returns (BookResponse) {}
 }
 
+service FileUploadController {
+    rpc UploadFile(stream FileChunk) returns (UploadStatus) {}
+}
+
 service JournalController {
     rpc Create(JournalRequest) returns (JournalResponse) {}
     rpc Destroy(JournalDestroyRequest) returns (google.protobuf.Empty) {}
@@ -108,6 +112,7 @@ message BookPartialUpdateRequest {
     string publisher = 6;
     string publication_date = 7;
     repeated string _partial_update_fields = 8;
+    optional string image = 9;
 }
 
 message BookRequest {
@@ -118,6 +123,7 @@ message BookRequest {
     optional string isbn = 5;
     string publisher = 6;
     string publication_date = 7;
+    optional string image = 8;
 }
 
 message BookResponse {
@@ -128,6 +134,7 @@ message BookResponse {
     optional string isbn = 5;
     string publisher = 6;
     string publication_date = 7;
+    optional string image = 8;
 }
 
 message BookRetrieveRequest {
@@ -143,6 +150,10 @@ message BookStreamBooksByIDListResponse {
 }
 
 message BookStreamRequest {
+}
+
+message FileChunk {
+    bytes data = 1;
 }
 
 message JournalDestroyRequest {
@@ -272,5 +283,9 @@ message PublisherResponse {
 
 message PublisherRetrieveRequest {
     string publisher_id = 1;
+}
+
+message UploadStatus {
+    bool success = 1;
 }
 

@@ -24,6 +24,9 @@ from django_socio_grpc import generics
 from django_socio_grpc.mixins import AsyncStreamModelMixin
 from django_socio_grpc.decorators import grpc_action
 
+import io
+import grpc
+
 from .models import Author, Publisher, PublicationCategory, Book, Journal
 #from .grpc import example_bib_app_pb2
 
@@ -137,3 +140,44 @@ class JournalService(generics.AsyncModelService):
         "categories__name",
         "issn",
     )
+
+class FileUploadService(generics.GenericService):
+
+        @grpc_action(
+            request=[{"name": "data", "type": "bytes"}],
+            request_name="FileChunk",
+            response=[{"name": "success", "type": "bool"}],
+            response_name="UploadStatus",
+            request_stream=True,
+        )
+        async def UploadFile(self, request, context):
+            print("File upload started")
+            result = await context.read()
+
+            if result == grpc.aio.EOF:
+                #return file_upload_pb2.UploadStatus(success=False)
+                print("EOF")
+
+            try:
+                with io.BytesIO() as f:
+                    while result != grpc.aio.EOF:
+                        print("Writing to bytes file")
+                        f.write(result.content)
+                        result = await context.read()
+                        
+                    f.seek(0)
+
+                    # file_content contain the entire content of the BytesIO object
+                    file_content=f.getvalue()
+
+                    # process your binary file file_content as you want...
+
+                print("File upload successful")
+                # return file_upload_pb2.UploadStatus(
+                #     success=True
+                # )
+
+            except Exception:
+                print("Document upload has failed…")
+                #LOGGER.exception("Document upload has failed…")
+                #return file_upload_pb2.UploadStatus(success=False)

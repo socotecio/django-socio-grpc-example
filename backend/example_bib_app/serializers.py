@@ -124,6 +124,7 @@ class BookProtoSerializer(proto_serializers.ModelProtoSerializer):
             "title",
             "authors",
             "categories",
+            "image",
             "isbn",
             "publisher",
             "publication_date",

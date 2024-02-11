@@ -23,6 +23,7 @@ from example_bib_app.services import (
     PublicationCategoryService,
     BookService,
     JournalService,
+    FileUploadService,
 )
 
 
@@ -33,3 +34,4 @@ def grpc_handlers(server):
     app_registry.register(PublicationCategoryService)
     app_registry.register(BookService)
     app_registry.register(JournalService)
+    app_registry.register(FileUploadService)
