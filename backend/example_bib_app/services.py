@@ -46,7 +46,7 @@ from django_socio_grpc.grpc_actions.placeholders import (
 
 from .filters import PublisherFilterSet, BookFilterSet
 
-
+import example_bib_app.grpc.example_bib_app_pb2 as exbib_pb2
 
 class AuthorService(generics.AsyncModelService):
     queryset = Author.objects.all()
@@ -141,43 +141,36 @@ class JournalService(generics.AsyncModelService):
         "issn",
     )
 
-class FileUploadService(generics.GenericService):
+class FileUploadService(generics.AsyncCreateService):
+    queryset = Book.objects.all()
+    filterset_class = BookFilterSet
+    serializer_class = BookProtoSerializer
 
-        @grpc_action(
-            request=[{"name": "data", "type": "bytes"}],
-            request_name="FileChunk",
-            response=[{"name": "success", "type": "bool"}],
-            response_name="UploadStatus",
-            request_stream=True,
-        )
-        async def UploadFile(self, request, context):
-            print("File upload started")
-            result = await context.read()
+    @grpc_action(
+        request=[{"name": "data", "type": "bytes"}],
+        request_name="FileChunk",
+        response=[{"name": "success", "type": "bool"}],
+        response_name="UploadStatus",
+        request_stream=True,
+    )
+    async def UploadFile(self, request, context):
+        print("File upload started")
 
-            if result == grpc.aio.EOF:
-                #return file_upload_pb2.UploadStatus(success=False)
-                print("EOF")
+        try:
+            with io.BytesIO() as f:
+                async for file_chunk in request:
+                    print("Reading file chunk:", len(file_chunk.data))
+                    f.write(file_chunk.data)
 
-            try:
-                with io.BytesIO() as f:
-                    while result != grpc.aio.EOF:
-                        print("Writing to bytes file")
-                        f.write(result.content)
-                        result = await context.read()
-                        
-                    f.seek(0)
+                f.seek(0)
+                file_content = f.getvalue()
 
-                    # file_content contain the entire content of the BytesIO object
-                    file_content=f.getvalue()
+            print(f"File upload successful: {len(file_content)} bytes")
+            return exbib_pb2.UploadStatus(success=True)
 
-                    # process your binary file file_content as you want...
+        except Exception as e:
+            print("Document upload has failed…")
+            print(e)
+            #LOGGER.exception("Document upload has failed…")
+            return exbib_pb2.UploadStatus(success=False)
 
-                print("File upload successful")
-                # return file_upload_pb2.UploadStatus(
-                #     success=True
-                # )
-
-            except Exception:
-                print("Document upload has failed…")
-                #LOGGER.exception("Document upload has failed…")
-                #return file_upload_pb2.UploadStatus(success=False)

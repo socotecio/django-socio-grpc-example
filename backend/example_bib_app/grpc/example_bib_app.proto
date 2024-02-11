@@ -25,6 +25,7 @@ service BookController {
 }
 
 service FileUploadController {
+    rpc Create(BookRequest) returns (BookResponse) {}
     rpc UploadFile(stream FileChunk) returns (UploadStatus) {}
 }
 
