@@ -13,6 +13,7 @@ django-filter = "*"
 django-socio-grpc = {version = "*"}
 djangorestframework = "*"
 python = ">=3.9,<3.12"
+pillow = "^10.2.0"
 
 [tool.poetry.dev-dependencies]
 gunicorn = "*"

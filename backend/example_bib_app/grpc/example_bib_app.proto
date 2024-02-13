@@ -22,6 +22,7 @@ service BookController {
     rpc Stream(BookStreamRequest) returns (stream BookResponse) {}
     rpc StreamBooksByIDList(stream BookStreamBooksByIDListRequest) returns (stream BookStreamBooksByIDListResponse) {}
     rpc Update(BookRequest) returns (BookResponse) {}
+    rpc UpdateImage(stream FileChunk) returns (UploadStatus) {}
 }
 
 service JournalController {
@@ -104,10 +105,11 @@ message BookPartialUpdateRequest {
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
-    optional string isbn = 5;
-    string publisher = 6;
-    string publication_date = 7;
-    repeated string _partial_update_fields = 8;
+    optional string image = 5;
+    optional string isbn = 6;
+    string publisher = 7;
+    string publication_date = 8;
+    repeated string _partial_update_fields = 9;
 }
 
 message BookRequest {
@@ -115,9 +117,10 @@ message BookRequest {
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
-    optional string isbn = 5;
-    string publisher = 6;
-    string publication_date = 7;
+    optional string image = 5;
+    optional string isbn = 6;
+    string publisher = 7;
+    string publication_date = 8;
 }
 
 message BookResponse {
@@ -125,9 +128,10 @@ message BookResponse {
     string title = 2;
     repeated string authors = 3;
     repeated string categories = 4;
-    optional string isbn = 5;
-    string publisher = 6;
-    string publication_date = 7;
+    optional string image = 5;
+    optional string isbn = 6;
+    string publisher = 7;
+    string publication_date = 8;
 }
 
 message BookRetrieveRequest {
@@ -143,6 +147,12 @@ message BookStreamBooksByIDListResponse {
 }
 
 message BookStreamRequest {
+}
+
+message FileChunk {
+    string filename = 1;
+    string book_id = 2;
+    bytes data = 3;
 }
 
 message JournalDestroyRequest {
@@ -272,5 +282,9 @@ message PublisherResponse {
 
 message PublisherRetrieveRequest {
     string publisher_id = 1;
+}
+
+message UploadStatus {
+    bool success = 1;
 }
 

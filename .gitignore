@@ -15,3 +15,4 @@ data/
 Makefile
 .pytest_cache
 *.sqlite3
+backend/images/*

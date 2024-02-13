@@ -281,6 +281,11 @@ class BookControllerStub(object):
                 request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
                 response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
                 )
+        self.UpdateImage = channel.stream_unary(
+                '/dsg_example.example_bib_app.BookController/UpdateImage',
+                request_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.FileChunk.SerializeToString,
+                response_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.UploadStatus.FromString,
+                )
 
 
 class BookControllerServicer(object):
@@ -334,6 +339,12 @@ class BookControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def UpdateImage(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_BookControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -376,6 +387,11 @@ def add_BookControllerServicer_to_server(servicer, server):
                     servicer.Update,
                     request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.FromString,
                     response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.SerializeToString,
+            ),
+            'UpdateImage': grpc.stream_unary_rpc_method_handler(
+                    servicer.UpdateImage,
+                    request_deserializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.FileChunk.FromString,
+                    response_serializer=example__bib__app_dot_grpc_dot_example__bib__app__pb2.UploadStatus.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -520,6 +536,23 @@ class BookController(object):
         return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Update',
             example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookRequest.SerializeToString,
             example__bib__app_dot_grpc_dot_example__bib__app__pb2.BookResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateImage(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/dsg_example.example_bib_app.BookController/UpdateImage',
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.FileChunk.SerializeToString,
+            example__bib__app_dot_grpc_dot_example__bib__app__pb2.UploadStatus.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

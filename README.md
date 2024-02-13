@@ -24,7 +24,7 @@ The example is completely containerised, and can be run with docker-compose.
 ### with docker-compose
 
 ```bash
-docker-compose up --build
+docker compose up --build
 
 docker compose exec dsg-example-grpc ./manage.py migrate
 
