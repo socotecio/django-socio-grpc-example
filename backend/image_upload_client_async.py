@@ -28,7 +28,7 @@ async def update_image(stub, image_file_path, filename="", book_id=""):
 
 
 async def main():
-     image_filename = "/tmp/pics/les_miserables.jpg"
+     image_filename = "./les_miserables.jpg"
 
      async with grpc.aio.insecure_channel("localhost:50051") as channel:
         print("book image client started")
