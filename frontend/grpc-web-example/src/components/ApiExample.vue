@@ -19,10 +19,14 @@ const authorClient = createPromiseClient(AuthorController, transport);
 
 let items = ref([])
 
-onMounted(async() => {
+const fetchAuthors = async () => {
   const res = await authorClient.list({})
   console.log(res)
   items.value = res.results
+}
+
+onMounted(async() => {
+  await fetchAuthors()
 })
 
 async function createAuthor() {
@@ -32,6 +36,7 @@ async function createAuthor() {
     birthDate: "2000-01-01"    
   })
   console.log(res)
+  await fetchAuthors()
 }
 
 </script>
@@ -40,7 +45,7 @@ async function createAuthor() {
   <div class="greetings">
     <h1 class="green">gRPC Web Example</h1>
     <button @click="createAuthor">Create element with grpc-web</button>
-    <h3>Elements existings: </h3>
+    <h3>Existings Authors: </h3>
     <ul>
       <li v-for="item in items">{{ item.nameFirst }} {{ item.nameLast }} {{ item.birthDate }}</li>
     </ul>
