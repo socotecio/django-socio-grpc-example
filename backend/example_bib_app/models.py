@@ -56,7 +56,7 @@ class Journal(models.Model):
     authors = models.ManyToManyField(Author)
     categories = models.ManyToManyField(PublicationCategory, blank=True)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-    publication_date = models.DateField(default=timezone.now)
+    publication_datetime = models.DateTimeField(default=timezone.now)
     volume = models.IntegerField(blank=True, null=True)
     issue = models.IntegerField(blank=True, null=True)
     issn = models.CharField(max_length=20, blank=True, null=True)

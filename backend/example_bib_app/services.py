@@ -21,7 +21,7 @@ Additionally, the `BookStreamingService` class could be moved to a separate modu
 """
 import asyncio
 from django_socio_grpc import generics
-from django_socio_grpc.mixins import AsyncStreamModelMixin
+from django_socio_grpc.mixins import AsyncBulkCreateMixin, AsyncStreamModelMixin
 from django_socio_grpc.decorators import grpc_action
 
 from .models import Author, Publisher, PublicationCategory, Book, Journal
@@ -43,9 +43,7 @@ from django_socio_grpc.grpc_actions.placeholders import (
 
 from .filters import PublisherFilterSet, BookFilterSet
 
-
-
-class AuthorService(generics.AsyncModelService):
+class AuthorService(generics.AsyncModelService, AsyncBulkCreateMixin):
     queryset = Author.objects.all()
 
     # filterset_fields allows for filtering of the queryset, only based on exact matches.
