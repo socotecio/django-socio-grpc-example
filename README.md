@@ -92,6 +92,11 @@ docker compose exec dsg-example-grpc ./manage.py migrate
 Go to http://localhost:5173 and create elements
 
 
+## how to update the api generated client file when API update
+
+```bash
+docker compose up buf generate
+```
 
 ## how to update the js file when API update
 
@@ -99,7 +104,7 @@ Best practice want you to generate API in a separate repository or use BSR (Buf 
 
 Doc are coming to explain the step for the grpc web example
 
-```
+```bash
 cp backend/example_bib_app/grpc/*.proto frontend/grpc-web-example/proto/
 
 docker compose exec dsg-example-front npx buf generate proto
