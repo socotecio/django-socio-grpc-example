@@ -12,7 +12,7 @@ django-environ = "*"
 django-filter = "*"
 django-socio-grpc = {version = "*"}
 djangorestframework = "*"
-python = ">=3.9,<3.12"
+python = ">=3.9,<3.13"
 
 [tool.poetry.dev-dependencies]
 gunicorn = "*"

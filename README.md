@@ -28,6 +28,10 @@ docker-compose up --build
 
 docker compose exec dsg-example-grpc ./manage.py migrate
 
+
+# create the proto files
+docker compose exec dsg-example-grpc ./manage.py generateproto
+
 # TODO load data
 
 docker compose exec dsg-example-grpc python bib_example_client.py
