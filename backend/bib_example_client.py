@@ -16,6 +16,11 @@ async def main():
 
         book_client = example_bib_app_pb2_grpc.BookControllerStub(channel)
 
+        journal_client = example_bib_app_pb2_grpc.JournalControllerStub(channel)
+
+
+        # ________________ Authors ________________
+
         # Create
         for i in range(10):
             author_response = await author_client.Create(
@@ -46,7 +51,10 @@ async def main():
         )
         print("author update response:", author_response)  # flush=True
 
+        last_author_id = author_response.author_id
 
+        # ________________ Publishers ________________
+        
         # Create three Publisher
 
         publisher_response = await publisher_client.Create(
@@ -87,6 +95,10 @@ async def main():
 
         print("publisher create response:", publisher_response)
 
+        last_publisher_id = publisher_response.publisher_id
+
+        # ________________ Publication Categories ________________
+
         # Create three PublicationCategories
 
         publication_category_response = await publ_cat_client.Create(
@@ -114,18 +126,21 @@ async def main():
 
         # list all categories
 
-        res = await publisher_client.List(example_bib_app_pb2.PublicationCategoryListRequest())
+        res = await publ_cat_client.List(example_bib_app_pb2.PublicationCategoryListRequest())
         res.results
         for category in res.results:
             print(category.name)
-        
+            last_category_id = category.category_id
 
+        # ________________ Books ________________
+        
         # Create ten Books
 
         for i in range(10):
             await book_client.Create(example_bib_app_pb2.BookRequest(title=f'book {i}', 
                                                                     authors=[author_response.author_id],
                                                                     isbn=f'isbn-{i}',
+                                                                    categories=[last_category_id],
                                                                     publisher=publisher_response.publisher_id,
                                                                     publication_date=datetime.now().strftime('%Y-%m-%d')
                                                                     ))
@@ -137,6 +152,23 @@ async def main():
         async for book in  book_client.Stream(example_bib_app_pb2.BookStreamRequest()):
             print(book)     
 
+
+        # ________________ Journals ________________
+
+        # creating Journal Articles
+        for i in range(10):
+            await journal_client.Create(example_bib_app_pb2.JournalRequest(title=f'journal {i}', 
+                                                                    authors=[last_author_id],
+                                                                    publisher=last_publisher_id,
+                                                                    categories=[last_category_id],
+                                                                    #publication_date=datetime.now().strftime('%Y-%m-%d')
+                                                                    ))
+
+
+        # list Journal Articles
+
+        res = await journal_client.List(example_bib_app_pb2.JournalListRequest())
+        print("Journal List:\n", res.results ) 
 
         # Delete
         # author_response = await author_client.Delete(example_bib_app_pb2.AuthorRequest(author_id=1))
