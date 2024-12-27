@@ -5,6 +5,7 @@ package dsg_example.example_bib_app;
 import "google/protobuf/empty.proto";
 
 service AuthorController {
+    rpc BulkCreate(AuthorListRequest) returns (AuthorListResponse) {}
     rpc Create(AuthorRequest) returns (AuthorResponse) {}
     rpc Destroy(AuthorDestroyRequest) returns (google.protobuf.Empty) {}
     rpc List(AuthorListRequest) returns (AuthorListResponse) {}
@@ -56,6 +57,7 @@ message AuthorDestroyRequest {
 }
 
 message AuthorListRequest {
+    repeated AuthorRequest results = 1;
 }
 
 message AuthorListResponse {
@@ -162,7 +164,7 @@ message JournalPartialUpdateRequest {
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    string publication_date = 6;
+    string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
@@ -175,7 +177,7 @@ message JournalRequest {
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    string publication_date = 6;
+    string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;
@@ -187,7 +189,7 @@ message JournalResponse {
     repeated string authors = 3;
     repeated string categories = 4;
     string publisher = 5;
-    string publication_date = 6;
+    string publication_datetime = 6;
     optional int32 volume = 7;
     optional int32 issue = 8;
     optional string issn = 9;

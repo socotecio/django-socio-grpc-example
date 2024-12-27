@@ -160,7 +160,7 @@ class JournalProtoSerializer(proto_serializers.ModelProtoSerializer):
             "authors",
             "categories",
             "publisher",
-            "publication_date",
+            "publication_datetime",
             "volume",
             "issue",
             "issn",
