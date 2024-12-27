@@ -32,9 +32,7 @@ services:
 
   envoy:
     build:
-      context: ./
-      dockerfile: ./envoy/Dockerfile
-    image: grpcweb/envoy
+      context: ./envoy
     volumes:
       - ./envoy:/etc/envoy
     ports:
