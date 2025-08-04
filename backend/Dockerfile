@@ -21,10 +21,12 @@ RUN pip install --no-cache-dir psycopg2 proto-parser && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN poetry config virtualenvs.create false
+RUN poetry config virtualenvs.create false 
 
 COPY pyproject.toml .
 # COPY poetry.lock .
+
+ADD example_bib_app /opt/code/example_bib_app
 
 RUN poetry install
 
