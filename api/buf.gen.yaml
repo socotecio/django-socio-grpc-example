@@ -9,27 +9,24 @@ managed:
     - file_option: go_package_prefix
       value: django-socio-grpc-example
 plugins:
-  ########## GO
-  - remote: buf.build/grpc/go:v1.5.1
+  - remote: buf.build/protocolbuffers/go
     out: grpc/go
-    opt:
-      - paths=source_relative
-  # dependencies
-  - remote: buf.build/protocolbuffers/go:v1.34.2
+    opt: paths=source_relative
+  - remote: buf.build/bufbuild/connect-go
     out: grpc/go
-    opt:
-      - paths=source_relative
-  ########## PYTHON
-  - remote: buf.build/grpc/python:v1.68.2
+    opt: paths=source_relative
+  - remote: buf.build/grpc/python:v1.74.0
+    out: grpc/python
+  - remote: buf.build/protocolbuffers/python:v31.1
     out: grpc/python
   # dependencies
-  - remote: buf.build/bufbuild/connect-es:v0.13.0
+  - remote: buf.build/protocolbuffers/pyi:v31.1
     out: grpc/python
-    #opt: paths=source_relative
-  ########## WEB
-  - remote: buf.build/bufbuild/connect-es:v0.11.0
-    out: grpc/connect-es
+  - remote: buf.build/bufbuild/es:v2.6.0
+    out: grpc/gen
+  - remote: buf.build/grpc/web:v1.5.0
+    out: grpc/grpc-web
+    opt: mode=grpcwebtext
   # dependencies
-  - remote: buf.build/bufbuild/es:v1.3.0
-    out: grpc/connect-es
-
+  - remote: buf.build/protocolbuffers/js:v3.21.4
+    out: grpc/grpc-web

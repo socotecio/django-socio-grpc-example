@@ -33,7 +33,7 @@ async function createAuthor() {
   const res = await authorClient.create({
     nameFirst: "TestFirst",
     nameLast: "TestLast",
-    birthDate: "2000-01-01"    
+    birthDate: new Date().toISOString().split("T")[0]
   })
   console.log(res)
   await fetchAuthors()
