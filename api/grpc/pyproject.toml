@@ -1,7 +1,7 @@
 [project]
 name = "socio_bib_example_grpc"
 description = "gRPC interface to socio_bib_example_grpc"
-version = "0.2.95"
+version = "0.0.3"
 authors = [{ name = "mark doerr", email = "mark.doerr@uni-greifswald.de" }]
 requires-python = "==3.13.*"
 dependencies = ["grpcio>=1.73.0"]
