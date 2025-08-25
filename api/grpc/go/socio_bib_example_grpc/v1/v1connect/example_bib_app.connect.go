@@ -6,9 +6,9 @@ package v1connect
 
 import (
 	context "context"
+	v1 "django-socio-grpc-example/socio_bib_example_grpc/v1"
 	errors "errors"
 	connect_go "github.com/bufbuild/connect-go"
-	v1 "gitlab.com/larasuite/lara-django-data/grpc/socio_bib_example_grpc/v1"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	http "net/http"
 	strings "strings"

@@ -1,8 +1,12 @@
-version: v1
+# buf.gen.yaml defines a local generation template.
+# For details, see https://buf.build/docs/configuration/v2/buf-gen-yaml
+version: v2
+clean: true
 plugins:
-  - plugin: es
-    opt: target=js
+  # This will invoke protoc-gen-es and write output to src/gen
+  - local: protoc-gen-es
     out: src/gen
-  - plugin: connect-es
-    out: src/gen
+    # Also generate any imported dependencies
+    include_imports: true
+    # Add more plugin options here
     opt: target=js

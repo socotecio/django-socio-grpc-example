@@ -1,5 +1,3 @@
-version: "3.1"
-
 services:
 
   dsg-example-back:
@@ -36,7 +34,7 @@ services:
     volumes:
       - ./envoy:/etc/envoy
     ports:
-      - "9001:9001"
+      - "9009:9001"
     links:
       - dsg-example-grpc
     networks:
@@ -52,12 +50,26 @@ services:
       - "5173:5173"
     build:
       context: ./frontend/grpc-web-example
+      dockerfile: Dockerfile
     volumes:
       - ./frontend/grpc-web-example:/opt/code
       - /opt/code/node_modules
     command: dev -- --host
     networks:
       dsg-example-network:
+
+    
+  # ---------------------------- buf build -------------------------------------------
+
+  buf:
+    image: bufbuild/buf
+    volumes:
+      - ./api:/workspace
+    profiles: [bufbuild]
+    working_dir: /workspace
+    # command: config migrate --diff
+    # command: build
+    command: generate
 
 networks:
   dsg-example-network:

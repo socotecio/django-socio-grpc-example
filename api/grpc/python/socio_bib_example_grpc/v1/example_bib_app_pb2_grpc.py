@@ -19,32 +19,32 @@ class AuthorControllerStub(object):
                 '/dsg_example.example_bib_app.AuthorController/Create',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-                )
+                _registered_method=True)
         self.Destroy = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/Destroy',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+                _registered_method=True)
         self.List = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/List',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorListRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorListResponse.FromString,
-                )
+                _registered_method=True)
         self.PartialUpdate = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/PartialUpdate',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorPartialUpdateRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-                )
+                _registered_method=True)
         self.Retrieve = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/Retrieve',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-                )
+                _registered_method=True)
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.AuthorController/Update',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class AuthorControllerServicer(object):
@@ -123,6 +123,7 @@ def add_AuthorControllerServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'dsg_example.example_bib_app.AuthorController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('dsg_example.example_bib_app.AuthorController', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -140,11 +141,21 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Create',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.AuthorController/Create',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Destroy(request,
@@ -157,11 +168,21 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Destroy',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.AuthorController/Destroy',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def List(request,
@@ -174,11 +195,21 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/List',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.AuthorController/List',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorListRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorListResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def PartialUpdate(request,
@@ -191,11 +222,21 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/PartialUpdate',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.AuthorController/PartialUpdate',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorPartialUpdateRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Retrieve(request,
@@ -208,11 +249,21 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Retrieve',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.AuthorController/Retrieve',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorRetrieveRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Update(request,
@@ -225,11 +276,21 @@ class AuthorController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.AuthorController/Update',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.AuthorController/Update',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.AuthorResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
 
 class BookControllerStub(object):
@@ -245,42 +306,42 @@ class BookControllerStub(object):
                 '/dsg_example.example_bib_app.BookController/Create',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-                )
+                _registered_method=True)
         self.Destroy = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/Destroy',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+                _registered_method=True)
         self.List = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/List',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookListRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookListResponse.FromString,
-                )
+                _registered_method=True)
         self.PartialUpdate = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/PartialUpdate',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookPartialUpdateRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-                )
+                _registered_method=True)
         self.Retrieve = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/Retrieve',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-                )
+                _registered_method=True)
         self.Stream = channel.unary_stream(
                 '/dsg_example.example_bib_app.BookController/Stream',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookStreamRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-                )
+                _registered_method=True)
         self.StreamBooksByIDList = channel.stream_stream(
                 '/dsg_example.example_bib_app.BookController/StreamBooksByIDList',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookStreamBooksByIDListRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookStreamBooksByIDListResponse.FromString,
-                )
+                _registered_method=True)
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.BookController/Update',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class BookControllerServicer(object):
@@ -381,6 +442,7 @@ def add_BookControllerServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'dsg_example.example_bib_app.BookController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('dsg_example.example_bib_app.BookController', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -398,11 +460,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Create',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/Create',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Destroy(request,
@@ -415,11 +487,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Destroy',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/Destroy',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def List(request,
@@ -432,11 +514,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/List',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/List',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookListRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookListResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def PartialUpdate(request,
@@ -449,11 +541,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/PartialUpdate',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/PartialUpdate',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookPartialUpdateRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Retrieve(request,
@@ -466,11 +568,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Retrieve',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/Retrieve',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookRetrieveRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Stream(request,
@@ -483,11 +595,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/dsg_example.example_bib_app.BookController/Stream',
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/Stream',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookStreamRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def StreamBooksByIDList(request_iterator,
@@ -500,11 +622,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(request_iterator, target, '/dsg_example.example_bib_app.BookController/StreamBooksByIDList',
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/dsg_example.example_bib_app.BookController/StreamBooksByIDList',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookStreamBooksByIDListRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookStreamBooksByIDListResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Update(request,
@@ -517,11 +649,21 @@ class BookController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.BookController/Update',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.BookController/Update',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.BookResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
 
 class JournalControllerStub(object):
@@ -537,32 +679,32 @@ class JournalControllerStub(object):
                 '/dsg_example.example_bib_app.JournalController/Create',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-                )
+                _registered_method=True)
         self.Destroy = channel.unary_unary(
                 '/dsg_example.example_bib_app.JournalController/Destroy',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+                _registered_method=True)
         self.List = channel.unary_unary(
                 '/dsg_example.example_bib_app.JournalController/List',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalListRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalListResponse.FromString,
-                )
+                _registered_method=True)
         self.PartialUpdate = channel.unary_unary(
                 '/dsg_example.example_bib_app.JournalController/PartialUpdate',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalPartialUpdateRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-                )
+                _registered_method=True)
         self.Retrieve = channel.unary_unary(
                 '/dsg_example.example_bib_app.JournalController/Retrieve',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-                )
+                _registered_method=True)
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.JournalController/Update',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class JournalControllerServicer(object):
@@ -641,6 +783,7 @@ def add_JournalControllerServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'dsg_example.example_bib_app.JournalController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('dsg_example.example_bib_app.JournalController', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -658,11 +801,21 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Create',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.JournalController/Create',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Destroy(request,
@@ -675,11 +828,21 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Destroy',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.JournalController/Destroy',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def List(request,
@@ -692,11 +855,21 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/List',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.JournalController/List',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalListRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalListResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def PartialUpdate(request,
@@ -709,11 +882,21 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/PartialUpdate',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.JournalController/PartialUpdate',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalPartialUpdateRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Retrieve(request,
@@ -726,11 +909,21 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Retrieve',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.JournalController/Retrieve',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalRetrieveRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Update(request,
@@ -743,11 +936,21 @@ class JournalController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.JournalController/Update',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.JournalController/Update',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.JournalResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
 
 class PublicationCategoryControllerStub(object):
@@ -763,32 +966,32 @@ class PublicationCategoryControllerStub(object):
                 '/dsg_example.example_bib_app.PublicationCategoryController/Create',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-                )
+                _registered_method=True)
         self.Destroy = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublicationCategoryController/Destroy',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+                _registered_method=True)
         self.List = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublicationCategoryController/List',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryListRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryListResponse.FromString,
-                )
+                _registered_method=True)
         self.PartialUpdate = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublicationCategoryController/PartialUpdate',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-                )
+                _registered_method=True)
         self.Retrieve = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublicationCategoryController/Retrieve',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-                )
+                _registered_method=True)
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublicationCategoryController/Update',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class PublicationCategoryControllerServicer(object):
@@ -867,6 +1070,7 @@ def add_PublicationCategoryControllerServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'dsg_example.example_bib_app.PublicationCategoryController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('dsg_example.example_bib_app.PublicationCategoryController', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -884,11 +1088,21 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Create',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublicationCategoryController/Create',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Destroy(request,
@@ -901,11 +1115,21 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Destroy',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublicationCategoryController/Destroy',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def List(request,
@@ -918,11 +1142,21 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/List',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublicationCategoryController/List',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryListRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryListResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def PartialUpdate(request,
@@ -935,11 +1169,21 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/PartialUpdate',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublicationCategoryController/PartialUpdate',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryPartialUpdateRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Retrieve(request,
@@ -952,11 +1196,21 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Retrieve',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublicationCategoryController/Retrieve',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryRetrieveRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Update(request,
@@ -969,11 +1223,21 @@ class PublicationCategoryController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublicationCategoryController/Update',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublicationCategoryController/Update',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublicationCategoryResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
 
 class PublisherControllerStub(object):
@@ -989,32 +1253,32 @@ class PublisherControllerStub(object):
                 '/dsg_example.example_bib_app.PublisherController/Create',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-                )
+                _registered_method=True)
         self.Destroy = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublisherController/Destroy',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+                _registered_method=True)
         self.List = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublisherController/List',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherListRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherListResponse.FromString,
-                )
+                _registered_method=True)
         self.PartialUpdate = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublisherController/PartialUpdate',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherPartialUpdateRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-                )
+                _registered_method=True)
         self.Retrieve = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublisherController/Retrieve',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-                )
+                _registered_method=True)
         self.Update = channel.unary_unary(
                 '/dsg_example.example_bib_app.PublisherController/Update',
                 request_serializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
                 response_deserializer=socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class PublisherControllerServicer(object):
@@ -1093,6 +1357,7 @@ def add_PublisherControllerServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'dsg_example.example_bib_app.PublisherController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('dsg_example.example_bib_app.PublisherController', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -1110,11 +1375,21 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Create',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublisherController/Create',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Destroy(request,
@@ -1127,11 +1402,21 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Destroy',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublisherController/Destroy',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def List(request,
@@ -1144,11 +1429,21 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/List',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublisherController/List',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherListRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherListResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def PartialUpdate(request,
@@ -1161,11 +1456,21 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/PartialUpdate',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublisherController/PartialUpdate',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherPartialUpdateRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Retrieve(request,
@@ -1178,11 +1483,21 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Retrieve',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublisherController/Retrieve',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherRetrieveRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Update(request,
@@ -1195,8 +1510,18 @@ class PublisherController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/dsg_example.example_bib_app.PublisherController/Update',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dsg_example.example_bib_app.PublisherController/Update',
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherRequest.SerializeToString,
             socio__bib__example__grpc_dot_v1_dot_example__bib__app__pb2.PublisherResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

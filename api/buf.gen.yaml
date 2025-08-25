@@ -2,32 +2,31 @@
 # buf lint grpc
 # buf generate grpc
 
-version: v1
+version: v2
 managed:
   enabled: true
-  go_package_prefix:
-    default: gitlab.com/larasuite/lara-django-data/grpc
+  override:
+    - file_option: go_package_prefix
+      value: django-socio-grpc-example
 plugins:
-  - plugin: buf.build/protocolbuffers/go
+  - remote: buf.build/protocolbuffers/go
     out: grpc/go
     opt: paths=source_relative
-  - plugin: buf.build/bufbuild/connect-go
+  - remote: buf.build/bufbuild/connect-go
     out: grpc/go
     opt: paths=source_relative
-  - plugin: buf.build/grpc/python:v1.56.0
+  - remote: buf.build/grpc/python:v1.74.0
+    out: grpc/python
+  - remote: buf.build/protocolbuffers/python:v31.1
     out: grpc/python
   # dependencies
-  - plugin: buf.build/protocolbuffers/python
+  - remote: buf.build/protocolbuffers/pyi:v31.1
     out: grpc/python
-    #opt: paths=source_relative
-  - plugin: buf.build/bufbuild/connect-es:v0.11.0
-    out: grpc/connect-es
+  - remote: buf.build/bufbuild/es:v2.6.0
+    out: grpc/gen
+  - remote: buf.build/grpc/web:v1.5.0
+    out: grpc/grpc-web
+    opt: mode=grpcwebtext
   # dependencies
-  - plugin: buf.build/bufbuild/es
-    out: grpc/connect-es
-  # - plugin: buf.build/grpc/web:v1.4.2
-  #   out: grpc
-  # dependencies
-  # - plugin: buf.build/protocolbuffers/js
-  #   out: grpc
-
+  - remote: buf.build/protocolbuffers/js:v3.21.4
+    out: grpc/grpc-web

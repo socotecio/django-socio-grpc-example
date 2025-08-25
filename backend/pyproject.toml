@@ -4,6 +4,9 @@ description = "Example for DSG lib"
 license = "Apache-2.0"
 name = "example_bib_app"
 version = "0.0.2"
+packages = [
+    { include = "example_bib_app" }
+]
 
 [tool.poetry.dependencies]
 django = "*"
@@ -12,9 +15,9 @@ django-environ = "*"
 django-filter = "*"
 django-socio-grpc = {version = "*"}
 djangorestframework = "*"
-python = ">=3.9,<3.12"
+python = ">=3.9,<3.13"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 gunicorn = "*"
 black = "*"
 flake8 = "*"

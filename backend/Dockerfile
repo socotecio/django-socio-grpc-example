@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.12
 
 ENV PYTHONUNBUFFERED 1 
 
@@ -6,7 +6,7 @@ WORKDIR /opt/code
 
 RUN apt-get update \
     && apt-get install curl locales -y \
-    && curl -sSL https://install.python-poetry.org | python - --version 1.4.1
+    && curl -sSL https://install.python-poetry.org | python -
 
 RUN sed -i 's/^# *\(fr_FR.UTF-8\)/\1/' /etc/locale.gen
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
@@ -21,10 +21,12 @@ RUN pip install --no-cache-dir psycopg2 proto-parser && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN poetry config virtualenvs.create false
+RUN poetry config virtualenvs.create false 
 
 COPY pyproject.toml .
 # COPY poetry.lock .
+
+ADD example_bib_app /opt/code/example_bib_app
 
 RUN poetry install
 
